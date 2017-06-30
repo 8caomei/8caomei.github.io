@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="DDCTF安卓题-writeup," />
 
 
 
@@ -84,15 +84,37 @@
 
 
 
-<meta name="description" content="天若有情天亦老，我为长者续一秒。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="草莓的博客">
-<meta property="og:url" content="http://www.kongdewei.cn/index.html">
+<meta name="description" content="#0x01引子总觉得自己写东西能力太差，还是要练练的，所以就决定开始写点东西，前段做了一个滴滴CTF的其中一道安卓题目，题目并不难，主要分享一下做题过程和思路。
+
+#0x02要求与提示赛题背景：本挑战结合了Android, Java, C/C++，加密算法等知识点，考察了挑战者的binary逆向技术和加密算法能力。
+赛题描述：本题是一个app，请试分析app中隐藏的key，逆向加密算法并得到对应的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DDCTF安卓题-writeup">
+<meta property="og:url" content="http://www.kongdewei.cn/2017/06/30/DDCTF安卓题-writeup/index.html">
 <meta property="og:site_name" content="草莓的博客">
-<meta property="og:description" content="天若有情天亦老，我为长者续一秒。">
+<meta property="og:description" content="#0x01引子总觉得自己写东西能力太差，还是要练练的，所以就决定开始写点东西，前段做了一个滴滴CTF的其中一道安卓题目，题目并不难，主要分享一下做题过程和思路。
+
+#0x02要求与提示赛题背景：本挑战结合了Android, Java, C/C++，加密算法等知识点，考察了挑战者的binary逆向技术和加密算法能力。
+赛题描述：本题是一个app，请试分析app中隐藏的key，逆向加密算法并得到对应的">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/6671501-b5da14d5cee7f2d3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/6671501-ba050aa48e79dbb0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/6671501-6d5497f007ffebc1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/6671501-c084c150baf021d3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/6671501-95060fbf26f78c84.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/6671501-f40b92aa8b0e886a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/6671501-8cf3623f282ba066.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/6671501-a8017425e94dc037.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/6671501-5e5c61615f55fa02.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/6671501-7c1bc6151beb3e87.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/6671501-7f5b6a7367713f74.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2017-06-30T06:12:12.136Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="草莓的博客">
-<meta name="twitter:description" content="天若有情天亦老，我为长者续一秒。">
+<meta name="twitter:title" content="DDCTF安卓题-writeup">
+<meta name="twitter:description" content="#0x01引子总觉得自己写东西能力太差，还是要练练的，所以就决定开始写点东西，前段做了一个滴滴CTF的其中一道安卓题目，题目并不难，主要分享一下做题过程和思路。
+
+#0x02要求与提示赛题背景：本挑战结合了Android, Java, C/C++，加密算法等知识点，考察了挑战者的binary逆向技术和加密算法能力。
+赛题描述：本题是一个app，请试分析app中隐藏的key，逆向加密算法并得到对应的">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/6671501-b5da14d5cee7f2d3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
 
@@ -113,9 +135,9 @@
 
 
 
-  <link rel="canonical" href="http://www.kongdewei.cn/"/>
+  <link rel="canonical" href="http://www.kongdewei.cn/2017/06/30/DDCTF安卓题-writeup/"/>
 
-  <title> 草莓的博客 </title>
+  <title> DDCTF安卓题-writeup | 草莓的博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -146,9 +168,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -258,9 +278,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
   
@@ -280,10 +300,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/2017/06/30/DDCTF安卓题-writeup/" itemprop="url">
-                  DDCTF安卓题-writeup
-                </a>
+                DDCTF安卓题-writeup
               
             
           </h1>
@@ -349,9 +366,7 @@
       
 
       
-        
-          
-            <p>#0x01引子<br>总觉得自己写东西能力太差，还是要练练的，所以就决定开始写点东西，前段做了一个滴滴CTF的其中一道安卓题目，题目并不难，主要分享一下做题过程和思路。</p>
+        <p>#0x01引子<br>总觉得自己写东西能力太差，还是要练练的，所以就决定开始写点东西，前段做了一个滴滴CTF的其中一道安卓题目，题目并不难，主要分享一下做题过程和思路。</p>
 <p><img src="http://upload-images.jianshu.io/upload_images/6671501-b5da14d5cee7f2d3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="题目包"></p>
 <p>#0x02要求与提示<br>赛题背景：本挑战结合了Android, Java, C/C++，加密算法等知识点，考察了挑战者的binary逆向技术和加密算法能力。</p>
 <p>赛题描述：本题是一个app，请试分析app中隐藏的key，逆向加密算法并得到对应的秘钥。可以在app中尝试输入key，如果正确会显示“correct”，如果错误会显示“Wrong”。<br>提   示：阅读assembly code，理解xor的加密逻辑和参数，解出答案。<br>评分标准：key正确则可进入下一题。</p>
@@ -391,158 +406,59 @@
 <p>直接获取stringFromJNI返回值然后赋值给mFlagResultView，再安装运行即可。<br><img src="http://upload-images.jianshu.io/upload_images/6671501-7f5b6a7367713f74.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="打包运行效果"></p>
 <p>首发在先知社区，搬运到这里，稍微做了一些细节修改。</p>
 
-          
+      
+    </div>
+
+    <div>
+      
         
+
       
     </div>
 
     <div>
       
-    </div>
+        
 
-    <div>
       
     </div>
 
     <footer class="post-footer">
       
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/23/hello-world/" itemprop="url">
-                  Hello World
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-23T14:23:59+08:00" content="2016-09-23">
-              2016-09-23
-            </time>
-          </span>
-
+        <div class="post-tags">
           
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/test/" itemprop="url" rel="index">
-                    <span itemprop="name">test</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/09/23/hello-world/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/23/hello-world/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
+            <a href="/tags/DDCTF安卓题-writeup/" rel="tag">#DDCTF安卓题-writeup</a>
           
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          <p>1Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/23/hello-world/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/09/23/hello-world/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
+              </a>
+            
           </div>
-        
-      
-    </div>
 
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
       
 
       
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -550,6 +466,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/06/30/DDCTF安卓题-writeup/"
+           data-title="DDCTF安卓题-writeup" data-url="http://www.kongdewei.cn/2017/06/30/DDCTF安卓题-writeup/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -569,8 +493,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="http://www.kongdewei.cn/images/tx.jpg"
@@ -645,6 +578,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -748,6 +692,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 
