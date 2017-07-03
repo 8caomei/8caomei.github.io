@@ -9,9 +9,12 @@
       <content type="html"><![CDATA[<p>首发：<a href="http://kongdewei.cn/2017/07/03/Android-Studio%E5%8A%A8%E6%80%81%E8%B0%83%E8%AF%95Smail/" target="_blank" rel="external">Android Studio动态调试Smail</a></p>
 <p>0x00 前言<br><a href="http://kongdewei.cn/2017/06/30/DDCTF%E5%AE%89%E5%8D%93%E9%A2%98-writeup/" target="_blank" rel="external">DDCTF安卓题调试</a><br>上一次是静态修改，后来我在想能不能动态调试得到Flag，于是就有了这篇文章。</p>
 <blockquote>
-<p>apk下载地址<br><a href="http://download.csdn.net/detail/dad9988/9887419" target="_blank" rel="external">http://download.csdn.net/detail/dad9988/9887419</a><br><a id="more"></a></p>
+<p>apk下载地址<br><a href="http://download.csdn.net/detail/dad9988/9887419" target="_blank" rel="external">http://download.csdn.net/detail/dad9988/9887419</a></p>
+</blockquote>
+<a id="more"></a>
 <p>#0x01 准备工作</p>
-<h2 id="下载、安装android-studio"><a href="#下载、安装android-studio" class="headerlink" title="下载、安装android studio"></a>下载、安装android studio</h2><p><a href="https://dl.google.com/dl/android/studio/install/2.3.2.0/android-studio-bundle-162.3934792-windows.exe" target="_blank" rel="external">https://dl.google.com/dl/android/studio/install/2.3.2.0/android-studio-bundle-162.3934792-windows.exe</a></p>
+<h2 id="下载、安装android-studio"><a href="#下载、安装android-studio" class="headerlink" title="下载、安装android studio"></a>下载、安装android studio</h2><blockquote>
+<p><a href="https://dl.google.com/dl/android/studio/install/2.3.2.0/android-studio-bundle-162.3934792-windows.exe" target="_blank" rel="external">https://dl.google.com/dl/android/studio/install/2.3.2.0/android-studio-bundle-162.3934792-windows.exe</a></p>
 </blockquote>
 <p>非常神奇，可以不翻(河蟹)墙下载,看来G(河蟹)F(河蟹)W对程序员还是很友善的。<br>android studio集成了所需要的东西，以前eclipse需要另外装各种东西方便很多。</p>
 <p><img src="http://upload-images.jianshu.io/upload_images/6671501-0ff9957faf920f69.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="IDM下载中..."></p>
