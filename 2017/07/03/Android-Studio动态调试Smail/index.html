@@ -93,22 +93,16 @@
 
 
 
-<meta name="description" content="#0x01 准备工作
-##下载、安装android studio
+<meta name="description" content="0x00 前言DDCTF安卓题调试上一次是静态修改，后来我在想能不能动态调试得到Flag，于是就有了这篇文章。
 
-https://dl.google.com/dl/android/studio/install/2.3.2.0/android-studio-bundle-162.3934792-windows.exe
-
-非常神奇，可以不翻(河蟹)墙下载,看来G(河蟹)F(河蟹)W对程序员还是很友善的。android studio集成了所需要的东">
+apk下载地址http://download.csdn.net/detail/dad9988/9887419">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android Studio动态调试Smail">
 <meta property="og:url" content="http://www.kongdewei.cn/2017/07/03/Android-Studio动态调试Smail/index.html">
 <meta property="og:site_name" content="草莓的博客">
-<meta property="og:description" content="#0x01 准备工作
-##下载、安装android studio
+<meta property="og:description" content="0x00 前言DDCTF安卓题调试上一次是静态修改，后来我在想能不能动态调试得到Flag，于是就有了这篇文章。
 
-https://dl.google.com/dl/android/studio/install/2.3.2.0/android-studio-bundle-162.3934792-windows.exe
-
-非常神奇，可以不翻(河蟹)墙下载,看来G(河蟹)F(河蟹)W对程序员还是很友善的。android studio集成了所需要的东">
+apk下载地址http://download.csdn.net/detail/dad9988/9887419">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/6671501-0ff9957faf920f69.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/6671501-1b330e974557138a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/6671501-4b74a8c3d2b850f2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
@@ -138,15 +132,12 @@ https://dl.google.com/dl/android/studio/install/2.3.2.0/android-studio-bundle-16
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/6671501-fe7bf17666b38866.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/6671501-580febd80d059429.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/6671501-c2317bf131ebf003.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-07-03T07:34:07.503Z">
+<meta property="og:updated_time" content="2017-07-03T07:44:18.434Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android Studio动态调试Smail">
-<meta name="twitter:description" content="#0x01 准备工作
-##下载、安装android studio
+<meta name="twitter:description" content="0x00 前言DDCTF安卓题调试上一次是静态修改，后来我在想能不能动态调试得到Flag，于是就有了这篇文章。
 
-https://dl.google.com/dl/android/studio/install/2.3.2.0/android-studio-bundle-162.3934792-windows.exe
-
-非常神奇，可以不翻(河蟹)墙下载,看来G(河蟹)F(河蟹)W对程序员还是很友善的。android studio集成了所需要的东">
+apk下载地址http://download.csdn.net/detail/dad9988/9887419">
 <meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/6671501-0ff9957faf920f69.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
@@ -396,9 +387,11 @@ https://dl.google.com/dl/android/studio/install/2.3.2.0/android-studio-bundle-16
       
 
       
-        <p>#0x01 准备工作</p>
-<p>##下载、安装android studio</p>
+        <p>0x00 前言<br><a href="http://kongdewei.cn/2017/06/30/DDCTF%E5%AE%89%E5%8D%93%E9%A2%98-writeup/" target="_blank" rel="external">DDCTF安卓题调试</a><br>上一次是静态修改，后来我在想能不能动态调试得到Flag，于是就有了这篇文章。</p>
 <blockquote>
+<p>apk下载地址<br><a href="http://download.csdn.net/detail/dad9988/9887419" target="_blank" rel="external">http://download.csdn.net/detail/dad9988/9887419</a><br><a id="more"></a></p>
+<p>#0x01 准备工作</p>
+<p>##下载、安装android studio</p>
 <p><a href="https://dl.google.com/dl/android/studio/install/2.3.2.0/android-studio-bundle-162.3934792-windows.exe" target="_blank" rel="external">https://dl.google.com/dl/android/studio/install/2.3.2.0/android-studio-bundle-162.3934792-windows.exe</a></p>
 </blockquote>
 <p>非常神奇，可以不翻(河蟹)墙下载,看来G(河蟹)F(河蟹)W对程序员还是很友善的。<br>android studio集成了所需要的东西，以前eclipse需要另外装各种东西方便很多。</p>
@@ -451,7 +444,8 @@ https://dl.google.com/dl/android/studio/install/2.3.2.0/android-studio-bundle-16
 <p><img src="http://upload-images.jianshu.io/upload_images/6671501-cc40db725d7f6db4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
 <p>已经断在我们下的断点。</p>
 <p><img src="http://upload-images.jianshu.io/upload_images/6671501-d2556f41ea49bfa1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p>#0x03 调试<br><a href="http://kongdewei.cn/2017/06/30/DDCTF%E5%AE%89%E5%8D%93%E9%A2%98-writeup/" target="_blank" rel="external">DDCTF安卓题调试</a><br>上一篇文章分析得出关键位置在MainActivity中的onClickTest函数，这次我们直接在这里下断点，动态调试。</p>
+<p>#0x03 调试<br><a href="http://kongdewei.cn/2017/06/30/DDCTF%E5%AE%89%E5%8D%93%E9%A2%98-writeup/" target="_blank" rel="external">DDCTF安卓题调试</a></p>
+<p>上一篇文章分析得出关键位置在MainActivity中的onClickTest函数，这次我们直接在这里下断点，动态调试。</p>
 <p><img src="http://upload-images.jianshu.io/upload_images/6671501-a32409efe54d3df4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
 <p>模拟器随便输入，点击test按钮，就会断在我们下的地方</p>
 <p><img src="http://upload-images.jianshu.io/upload_images/6671501-fe7bf17666b38866.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
