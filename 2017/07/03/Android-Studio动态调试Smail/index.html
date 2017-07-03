@@ -93,14 +93,16 @@
 
 
 
-<meta name="description" content="0x00 前言DDCTF安卓题调试上一次是静态修改，后来我在想能不能动态调试得到Flag，于是就有了这篇文章。
+<meta name="description" content="首发：Android Studio动态调试Smail
+0x00 前言DDCTF安卓题调试上一次是静态修改，后来我在想能不能动态调试得到Flag，于是就有了这篇文章。
 
 apk下载地址http://download.csdn.net/detail/dad9988/9887419">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android Studio动态调试Smail">
 <meta property="og:url" content="http://www.kongdewei.cn/2017/07/03/Android-Studio动态调试Smail/index.html">
 <meta property="og:site_name" content="草莓的博客">
-<meta property="og:description" content="0x00 前言DDCTF安卓题调试上一次是静态修改，后来我在想能不能动态调试得到Flag，于是就有了这篇文章。
+<meta property="og:description" content="首发：Android Studio动态调试Smail
+0x00 前言DDCTF安卓题调试上一次是静态修改，后来我在想能不能动态调试得到Flag，于是就有了这篇文章。
 
 apk下载地址http://download.csdn.net/detail/dad9988/9887419">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/6671501-0ff9957faf920f69.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
@@ -132,10 +134,11 @@ apk下载地址http://download.csdn.net/detail/dad9988/9887419">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/6671501-fe7bf17666b38866.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/6671501-580febd80d059429.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/6671501-c2317bf131ebf003.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-07-03T07:44:18.434Z">
+<meta property="og:updated_time" content="2017-07-03T07:46:59.057Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android Studio动态调试Smail">
-<meta name="twitter:description" content="0x00 前言DDCTF安卓题调试上一次是静态修改，后来我在想能不能动态调试得到Flag，于是就有了这篇文章。
+<meta name="twitter:description" content="首发：Android Studio动态调试Smail
+0x00 前言DDCTF安卓题调试上一次是静态修改，后来我在想能不能动态调试得到Flag，于是就有了这篇文章。
 
 apk下载地址http://download.csdn.net/detail/dad9988/9887419">
 <meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/6671501-0ff9957faf920f69.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
@@ -387,12 +390,12 @@ apk下载地址http://download.csdn.net/detail/dad9988/9887419">
       
 
       
-        <p>0x00 前言<br><a href="http://kongdewei.cn/2017/06/30/DDCTF%E5%AE%89%E5%8D%93%E9%A2%98-writeup/" target="_blank" rel="external">DDCTF安卓题调试</a><br>上一次是静态修改，后来我在想能不能动态调试得到Flag，于是就有了这篇文章。</p>
+        <p>首发：<a href="http://kongdewei.cn/2017/07/03/Android-Studio%E5%8A%A8%E6%80%81%E8%B0%83%E8%AF%95Smail/" target="_blank" rel="external">Android Studio动态调试Smail</a></p>
+<p>0x00 前言<br><a href="http://kongdewei.cn/2017/06/30/DDCTF%E5%AE%89%E5%8D%93%E9%A2%98-writeup/" target="_blank" rel="external">DDCTF安卓题调试</a><br>上一次是静态修改，后来我在想能不能动态调试得到Flag，于是就有了这篇文章。</p>
 <blockquote>
 <p>apk下载地址<br><a href="http://download.csdn.net/detail/dad9988/9887419" target="_blank" rel="external">http://download.csdn.net/detail/dad9988/9887419</a><br><a id="more"></a></p>
 <p>#0x01 准备工作</p>
-<p>##下载、安装android studio</p>
-<p><a href="https://dl.google.com/dl/android/studio/install/2.3.2.0/android-studio-bundle-162.3934792-windows.exe" target="_blank" rel="external">https://dl.google.com/dl/android/studio/install/2.3.2.0/android-studio-bundle-162.3934792-windows.exe</a></p>
+<h2 id="下载、安装android-studio"><a href="#下载、安装android-studio" class="headerlink" title="下载、安装android studio"></a>下载、安装android studio</h2><p><a href="https://dl.google.com/dl/android/studio/install/2.3.2.0/android-studio-bundle-162.3934792-windows.exe" target="_blank" rel="external">https://dl.google.com/dl/android/studio/install/2.3.2.0/android-studio-bundle-162.3934792-windows.exe</a></p>
 </blockquote>
 <p>非常神奇，可以不翻(河蟹)墙下载,看来G(河蟹)F(河蟹)W对程序员还是很友善的。<br>android studio集成了所需要的东西，以前eclipse需要另外装各种东西方便很多。</p>
 <p><img src="http://upload-images.jianshu.io/upload_images/6671501-0ff9957faf920f69.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="IDM下载中..."></p>
@@ -400,31 +403,30 @@ apk下载地址http://download.csdn.net/detail/dad9988/9887419">
 <p><img src="http://upload-images.jianshu.io/upload_images/6671501-4b74a8c3d2b850f2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="如果C盘空间不够可以修改下盘符"></p>
 <p><img src="http://upload-images.jianshu.io/upload_images/6671501-0ffa98fe15afbbb0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Setup Load..."></p>
 <p><img src="http://upload-images.jianshu.io/upload_images/6671501-09ebd5a4860ef4dd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="sdk包安装"></p>
-<p>##下载、安装模拟器</p>
-<blockquote>
+<h2 id="下载、安装模拟器"><a href="#下载、安装模拟器" class="headerlink" title="下载、安装模拟器"></a>下载、安装模拟器</h2><blockquote>
 <p> 推荐使用这款模拟器<br><a href="https://www.yeshen.com/" target="_blank" rel="external">https://www.yeshen.com/</a></p>
 </blockquote>
 <p>模拟器安装就不赘述了。</p>
-<p>##改之理<br>很多apk解包使用apktools.jar会出现各种问题，直接用ide会方便很多。</p>
+<h2 id="改之理"><a href="#改之理" class="headerlink" title="改之理"></a>改之理</h2><p>很多apk解包使用apktools.jar会出现各种问题，直接用ide会方便很多。</p>
 <blockquote>
 <p>下载地址：<br> <a href="http://www.52pojie.cn/thread-399571-1-1.html" target="_blank" rel="external">http://www.52pojie.cn/thread-399571-1-1.html</a></p>
 </blockquote>
 <p>#0x02 实战操作</p>
-<p>##1.解包与导入工程到Android Studio<br>首先使用apk改之理解包，直接用改之理打开apk包即可，改之理目录下就会有解包后的文件。<br><img src="http://upload-images.jianshu.io/upload_images/6671501-9d6eae63eac2fdda.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h2 id="1-解包与导入工程到Android-Studio"><a href="#1-解包与导入工程到Android-Studio" class="headerlink" title="1.解包与导入工程到Android Studio"></a>1.解包与导入工程到Android Studio</h2><p>首先使用apk改之理解包，直接用改之理打开apk包即可，改之理目录下就会有解包后的文件。<br><img src="http://upload-images.jianshu.io/upload_images/6671501-9d6eae63eac2fdda.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
 <p>work目录下是解包后的文件<br><img src="http://upload-images.jianshu.io/upload_images/6671501-9421f700c00b79cb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
 <p>打开Android Studio选Import project<br><img src="http://upload-images.jianshu.io/upload_images/6671501-a2021403a52a1e8e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
 <p>选择刚才的解包目录<br><img src="http://upload-images.jianshu.io/upload_images/6671501-a3d2fc495f199a35.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
 <p>直接next到底<br><img src="http://upload-images.jianshu.io/upload_images/6671501-e39da56d7e66038d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
 <p><img src="http://upload-images.jianshu.io/upload_images/6671501-ce072ea9d6f6cf07.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
 <p>导入后会有一段时间的加载文件。<br><img src="http://upload-images.jianshu.io/upload_images/6671501-83cbdb690d570c87.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p>##2.安装smalidea<br>File—&gt;Settings—&gt;Install plugin from disk<br><img src="http://upload-images.jianshu.io/upload_images/6671501-a0e92fc66131213e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h2 id="2-安装smalidea"><a href="#2-安装smalidea" class="headerlink" title="2.安装smalidea"></a>2.安装smalidea</h2><p>File—&gt;Settings—&gt;Install plugin from disk<br><img src="http://upload-images.jianshu.io/upload_images/6671501-a0e92fc66131213e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
 <blockquote>
 <p>下载smalidea-0.05.zip(这一步只需要做一次)<br><a href="https://bitbucket.org/JesusFreke/smali/downloads/" target="_blank" rel="external">https://bitbucket.org/JesusFreke/smali/downloads/</a></p>
 </blockquote>
 <p>选择刚下载的smalidea-0.05.zip<br><img src="http://upload-images.jianshu.io/upload_images/6671501-35fde0adcdf1314c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
 <p>导入需要重启一下。<br><img src="http://upload-images.jianshu.io/upload_images/6671501-39ed20c0bd810ace.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p>##3.寻找命令行启动参数<br>改之理解包目录下打开AndroidManifest.xml,记录activity层的android:name值。<br><img src="http://upload-images.jianshu.io/upload_images/6671501-970dcf1884ae77da.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p>##4.adb shell启动apk<br>运行模拟器，在Android Studio中启动android device monitor<br><img src="http://upload-images.jianshu.io/upload_images/6671501-06eb42c39e71bc55.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h2 id="3-寻找命令行启动参数"><a href="#3-寻找命令行启动参数" class="headerlink" title="3.寻找命令行启动参数"></a>3.寻找命令行启动参数</h2><p>改之理解包目录下打开AndroidManifest.xml,记录activity层的android:name值。<br><img src="http://upload-images.jianshu.io/upload_images/6671501-970dcf1884ae77da.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h2 id="4-adb-shell启动apk"><a href="#4-adb-shell启动apk" class="headerlink" title="4.adb shell启动apk"></a>4.adb shell启动apk</h2><p>运行模拟器，在Android Studio中启动android device monitor<br><img src="http://upload-images.jianshu.io/upload_images/6671501-06eb42c39e71bc55.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
 <p>一般会自动链接到ADM中，如果没有自动链接上去使用以下命令进行链接。</p>
 <blockquote>
 <p>我推荐的这个模拟器是链接62001其他模拟器自查<br>adb connect 127.0.0.1:62001</p>
@@ -550,8 +552,17 @@ apk下载地址http://download.csdn.net/detail/dad9988/9887419">
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="http://www.kongdewei.cn/images/tx.jpg"
@@ -638,6 +649,22 @@ apk下载地址http://download.csdn.net/detail/dad9988/9887419">
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#下载、安装android-studio"><span class="nav-number">1.</span> <span class="nav-text">下载、安装android studio</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#下载、安装模拟器"><span class="nav-number">2.</span> <span class="nav-text">下载、安装模拟器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#改之理"><span class="nav-number">3.</span> <span class="nav-text">改之理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-解包与导入工程到Android-Studio"><span class="nav-number">4.</span> <span class="nav-text">1.解包与导入工程到Android Studio</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-安装smalidea"><span class="nav-number">5.</span> <span class="nav-text">2.安装smalidea</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-寻找命令行启动参数"><span class="nav-number">6.</span> <span class="nav-text">3.寻找命令行启动参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-adb-shell启动apk"><span class="nav-number">7.</span> <span class="nav-text">4.adb shell启动apk</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
