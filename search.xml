@@ -75,7 +75,7 @@
     <entry>
       <title><![CDATA[DDCTF安卓题-writeup]]></title>
       <url>http://www.kongdewei.cn/2017/06/30/DDCTF%E5%AE%89%E5%8D%93%E9%A2%98-writeup/</url>
-      <content type="html"><![CDATA[<h1 id="0x01-引子"><a href="#0x01-引子" class="headerlink" title="0x01 引子"></a>0x01 引子</h1><p>总觉得自己写东西能力太差，还是要练练的，所以就决定开始写点东西，前段做了一个滴滴CTF的其中一道安卓题目，题目并不难，主要分享一下做题过程和思路。</p>
+      <content type="html"><![CDATA[<h1 id="0x01-引子"><a href="#0x01-引子" class="headerlink" title="0x01 引子"></a>0x01 引子</h1><p>前段做了一个滴滴CTF的其中一道安卓题目，题目并不难，主要分享一下做题过程和思路。</p>
 <p><img src="http://upload-images.jianshu.io/upload_images/6671501-b5da14d5cee7f2d3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="题目包"><br><a id="more"></a></p>
 <h1 id="0x02-要求与提示"><a href="#0x02-要求与提示" class="headerlink" title="0x02 要求与提示"></a>0x02 要求与提示</h1><p>赛题背景：本挑战结合了Android, Java, C/C++，加密算法等知识点，考察了挑战者的binary逆向技术和加密算法能力。</p>
 <p>赛题描述：本题是一个app，请试分析app中隐藏的key，逆向加密算法并得到对应的秘钥。可以在app中尝试输入key，如果正确会显示“correct”，如果错误会显示“Wrong”。<br>提   示：阅读assembly code，理解xor的加密逻辑和参数，解出答案。<br>评分标准：key正确则可进入下一题。</p>
