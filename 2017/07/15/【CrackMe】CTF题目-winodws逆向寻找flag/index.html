@@ -1,0 +1,847 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="CrackMe,ctf," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="前言这题目是命令行输入，OD关键位置时候有别于窗口程序，刚开始我是结合CE找到关键点。
+
+程序下载地址：http://download.csdn.net/detail/dad9988/9899751难度：★使用工具：ollydbg吾爱破解专版运行环境：windows 7 x64">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【CrackMe】CTF题目-winodws逆向寻找flag">
+<meta property="og:url" content="http://www.kongdewei.cn/2017/07/15/【CrackMe】CTF题目-winodws逆向寻找flag/index.html">
+<meta property="og:site_name" content="草莓的博客">
+<meta property="og:description" content="前言这题目是命令行输入，OD关键位置时候有别于窗口程序，刚开始我是结合CE找到关键点。
+
+程序下载地址：http://download.csdn.net/detail/dad9988/9899751难度：★使用工具：ollydbg吾爱破解专版运行环境：windows 7 x64">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/6671501-12ce52fab71d8d63.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/6671501-06d7ca95cea4fd1a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/6671501-63afa9d77b031c99.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/6671501-ed25161662f2527c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/6671501-91cb525e003720a7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/6671501-e1dc5851387a9629.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/6671501-a4e73ac74643b8fd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/6671501-0bdd9658c4eb606f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/6671501-63afa9d77b031c99.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2017-07-15T08:09:54.686Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【CrackMe】CTF题目-winodws逆向寻找flag">
+<meta name="twitter:description" content="前言这题目是命令行输入，OD关键位置时候有别于窗口程序，刚开始我是结合CE找到关键点。
+
+程序下载地址：http://download.csdn.net/detail/dad9988/9899751难度：★使用工具：ollydbg吾爱破解专版运行环境：windows 7 x64">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/6671501-12ce52fab71d8d63.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.kongdewei.cn/2017/07/15/【CrackMe】CTF题目-winodws逆向寻找flag/"/>
+
+
+
+
+
+  <title>【CrackMe】CTF题目-winodws逆向寻找flag | 草莓的博客</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?5ed37807f298c9631b73054ec4d3c710";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">草莓的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">:-)</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.kongdewei.cn/2017/07/15/【CrackMe】CTF题目-winodws逆向寻找flag/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="草莓丶">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://www.kongdewei.cn/images/tx.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="草莓的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">【CrackMe】CTF题目-winodws逆向寻找flag</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-15T16:07:30+08:00">
+                2017-07-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ctf/" itemprop="url" rel="index">
+                    <span itemprop="name">ctf</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ctf/CrackMe/" itemprop="url" rel="index">
+                    <span itemprop="name">CrackMe</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>这题目是命令行输入，OD关键位置时候有别于窗口程序，刚开始我是结合CE找到关键点。</p>
+<blockquote>
+<p>程序下载地址：<a href="http://download.csdn.net/detail/dad9988/9899751" target="_blank" rel="external">http://download.csdn.net/detail/dad9988/9899751</a><br>难度：★<br>使用工具：ollydbg<br>吾爱破解专版运行环境：windows 7 x64</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="程序截图"><a href="#程序截图" class="headerlink" title="程序截图"></a>程序截图</h1><p>之前在一个ctf平台上下载题目。<br><img src="http://upload-images.jianshu.io/upload_images/6671501-12ce52fab71d8d63.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h2 id="错误提示"><a href="#错误提示" class="headerlink" title="错误提示"></a>错误提示</h2><p><img src="http://upload-images.jianshu.io/upload_images/6671501-06d7ca95cea4fd1a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>##正确提示</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/6671501-63afa9d77b031c99.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h2 id="验证方式"><a href="#验证方式" class="headerlink" title="验证方式"></a>验证方式</h2><p>通过命令行输入flag，程序对输入信息进行加密运算后与存放在程序内的加密后数值进行比对。</p>
+<h1 id="分析过程"><a href="#分析过程" class="headerlink" title="分析过程"></a>分析过程</h1><p>一般载入程序跑起来之后是用过E标签，跳转到程序领空，再寻找关键字符串信息。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/6671501-ed25161662f2527c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>但这是命令行程序，载入直接就在程序领空，查找字符串</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/6671501-91cb525e003720a7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>很容易看到一串很可能是flag的东西，直接拿来输入试试看。</p>
+<blockquote>
+<p>e3nifIH9b_C@n@dH</p>
+</blockquote>
+<p><img src="http://upload-images.jianshu.io/upload_images/6671501-e1dc5851387a9629.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>提示错误，并不是那么简单直接进行明文字符对比。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/6671501-a4e73ac74643b8fd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>在提示输入flag的地方下断<br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="number">011B</span>5758    <span class="number">68</span> <span class="number">747B</span>1B01     push reverse_<span class="number">.011B</span>7B74                   ; please enter the flag:</div></pre></td></tr></table></figure></p>
+<p>F8步下，随意输入123456回车继续F8步下</p>
+<p>关键运算如下</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="number">011B</span>578F    E8 <span class="number">2</span>AB9FFFF     call reverse_<span class="number">.011B</span>10BE                   ; <span class="comment">//进行Base64编码</span></div><div class="line"><span class="number">011B</span>5794    <span class="number">83</span>C4 <span class="number">0</span>C         add esp,<span class="number">0xC</span></div><div class="line"><span class="number">011B</span>5797    <span class="number">50</span>              push eax</div><div class="line"><span class="number">011B</span>5798    <span class="number">8</span>D85 <span class="number">6</span>CFFFFFF   lea eax,dword ptr ss:[ebp<span class="number">-0x94</span>]</div><div class="line"><span class="number">011B</span>579E    <span class="number">50</span>              push eax</div><div class="line"><span class="number">011B</span>579F    FF15 <span class="number">88B</span>11B01   call dword ptr ds:[&lt;&amp;ucrtbased.<span class="built_in">strncpy</span>&gt;] ; ucrtbase.<span class="built_in">strncpy</span></div><div class="line"><span class="number">011B</span>57A5    <span class="number">83</span>C4 <span class="number">0</span>C         add esp,<span class="number">0xC</span></div><div class="line"><span class="number">011B</span>57A8    <span class="number">3B</span>F4            cmp esi,esp</div><div class="line"><span class="number">011B</span>57AA    E8 <span class="number">78B</span>9FFFF     call reverse_<span class="number">.011B</span>1127</div><div class="line"><span class="number">011B</span>57AF    <span class="number">8</span>D85 <span class="number">6</span>CFFFFFF   lea eax,dword ptr ss:[ebp<span class="number">-0x94</span>]</div><div class="line"><span class="number">011B</span>57B5    <span class="number">50</span>              push eax</div><div class="line"><span class="number">011B</span>57B6    E8 <span class="number">0</span>DB9FFFF     call reverse_<span class="number">.011B</span>10C8</div><div class="line"><span class="number">011B</span>57BB    <span class="number">83</span>C4 <span class="number">04</span>         add esp,<span class="number">0x4</span></div><div class="line"><span class="number">011B</span>57BE    <span class="number">8985</span> <span class="number">60F</span>FFFFF   mov dword ptr ss:[ebp<span class="number">-0xA0</span>],eax</div><div class="line"><span class="number">011B</span>57C4    C785 <span class="number">54F</span>FFFFF <span class="number">0</span>&gt;mov dword ptr ss:[ebp<span class="number">-0xAC</span>],<span class="number">0x0</span>          ; <span class="comment">//开始循环</span></div><div class="line"><span class="number">011B</span>57CE    EB <span class="number">0F</span>           jmp <span class="keyword">short</span> reverse_<span class="number">.011B</span>57DF</div><div class="line"><span class="number">011B</span>57D0    <span class="number">8B</span>85 <span class="number">54F</span>FFFFF   mov eax,dword ptr ss:[ebp<span class="number">-0xAC</span>]</div><div class="line"><span class="number">011B</span>57D6    <span class="number">83</span>C0 <span class="number">01</span>         add eax,<span class="number">0x1</span>                              ; 每次循环eax++</div><div class="line"><span class="number">011B</span>57D9    <span class="number">8985</span> <span class="number">54F</span>FFFFF   mov dword ptr ss:[ebp<span class="number">-0xAC</span>],eax</div><div class="line"><span class="number">011B</span>57DF    <span class="number">8B</span>85 <span class="number">54F</span>FFFFF   mov eax,dword ptr ss:[ebp<span class="number">-0xAC</span>]</div><div class="line"><span class="number">011B</span>57E5    <span class="number">3B</span>85 <span class="number">60F</span>FFFFF   cmp eax,dword ptr ss:[ebp<span class="number">-0xA0</span>]          ; 判断不超过字符串长度则继续</div><div class="line"><span class="number">011B</span>57EB    <span class="number">7</span>D <span class="number">23</span>           jge <span class="keyword">short</span> reverse_<span class="number">.011B</span>5810</div><div class="line"><span class="number">011B</span>57ED    <span class="number">8B</span>85 <span class="number">54F</span>FFFFF   mov eax,dword ptr ss:[ebp<span class="number">-0xAC</span>]</div><div class="line"><span class="number">011B</span>57F3    <span class="number">0F</span>BE8C05 <span class="number">6</span>CFFFF&gt;movsx ecx,byte ptr ss:[ebp+eax<span class="number">-0x94</span>]     ; 每次取一位字符串的hex+eax</div><div class="line"><span class="number">011B</span>57FB    <span class="number">038</span>D <span class="number">54F</span>FFFFF   add ecx,dword ptr ss:[ebp<span class="number">-0xAC</span>]</div><div class="line"><span class="number">011B</span>5801    <span class="number">8B</span>95 <span class="number">54F</span>FFFFF   mov edx,dword ptr ss:[ebp<span class="number">-0xAC</span>]</div><div class="line"><span class="number">011B</span>5807    <span class="number">888</span>C15 <span class="number">6</span>CFFFFFF mov byte ptr ss:[ebp+edx<span class="number">-0x94</span>],cl        ; 重新赋值给 字符串[eax]</div><div class="line"><span class="number">011B</span>580E  ^ EB C0           jmp <span class="keyword">short</span> reverse_<span class="number">.011B</span>57D0</div><div class="line"><span class="number">011B</span>5810    <span class="number">8</span>D85 <span class="number">6</span>CFFFFFF   lea eax,dword ptr ss:[ebp<span class="number">-0x94</span>]</div><div class="line"><span class="number">011B</span>5816    <span class="number">50</span>              push eax</div></pre></td></tr></table></figure>
+<p>最后在这里进行判断<br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="number">011B</span>581C    <span class="number">83</span>C4 <span class="number">04</span>         add esp,<span class="number">0x4</span></div><div class="line"><span class="number">011B</span>581F    <span class="number">8B</span>F4            mov esi,esp</div><div class="line"><span class="number">011B</span>5821    <span class="number">50</span>              push eax</div><div class="line"><span class="number">011B</span>5822    <span class="number">68</span> <span class="number">34</span>A01B01     push reverse_<span class="number">.011B</span>A034                   ; e3nifIH9b_C@n@dH</div><div class="line"><span class="number">011B</span>5827    <span class="number">8</span>D8D <span class="number">6</span>CFFFFFF   lea ecx,dword ptr ss:[ebp<span class="number">-0x94</span>]</div><div class="line"><span class="number">011B</span>582D    <span class="number">51</span>              push ecx</div><div class="line"><span class="number">011B</span>582E    FF15 <span class="number">84B</span>11B01   call dword ptr ds:[&lt;&amp;ucrtbased.<span class="built_in">strncmp</span>&gt;] ; ucrtbase.<span class="built_in">strncmp</span></div><div class="line"><span class="number">011B</span>5834    <span class="number">83</span>C4 <span class="number">0</span>C         add esp,<span class="number">0xC</span></div><div class="line"><span class="number">011B</span>5837    <span class="number">3B</span>F4            cmp esi,esp</div></pre></td></tr></table></figure></p>
+<p>关于strncmp的解释</p>
+<blockquote>
+<p>strncmp<br>int strncmp ( const char <em> str1, const char </em> str2, size_t n );<br>【参数】str1, str2 为需要比较的两个字符串，n为要比较的字符的数目。<br>字符串大小的比较是以ASCII 码表上的顺序来决定，此顺序亦为字符的值。strncmp()首先将s1 第一个字符值减去s2 第一个字符值，若差值为0 则再继续比较下个字符，直到字符结束标志’\0’，若差值不为0，则将差值返回。例如字符串”Ac”和”ba”比较则会返回字符”A”(65)和’b’(98)的差值(-33)。注意：要比较的字符包括字符串结束标志’\0’，而且一旦遇到’\0’就结束比较，无论n是多少，不再继续比较后边的字符。<br>【返回值】若str1与str2的前n个字符相同，则返回0；若s1大于s2，则返回大于0的值；若s1 若小于s2，则返回小于0的值。</p>
+</blockquote>
+<h2 id="爆破关键点"><a href="#爆破关键点" class="headerlink" title="爆破关键点"></a>爆破关键点</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="number">011B</span>5837    <span class="number">3B</span>F4            cmp esi,esp</div><div class="line"><span class="number">011B</span>5839    E8 E9B8FFFF     call reverse_<span class="number">.011B</span>1127</div><div class="line"><span class="number">011B</span>583E    <span class="number">85</span>C0            test eax,eax</div><div class="line"><span class="number">011B</span>5840    <span class="number">74</span> <span class="number">0F</span>           je <span class="keyword">short</span> reverse_<span class="number">.011B</span>5851               ; <span class="comment">//爆破关键点</span></div><div class="line"><span class="number">011B</span>5842    <span class="number">68</span> <span class="number">947B</span>1B01     push reverse_<span class="number">.011B</span>7B94                   ; wrong flag!\n</div><div class="line"><span class="number">011B</span>5847    E8 E3BAFFFF     call reverse_<span class="number">.011B</span>132F</div><div class="line"><span class="number">011B</span>584C    <span class="number">83</span>C4 <span class="number">04</span>         add esp,<span class="number">0x4</span></div><div class="line"><span class="number">011B</span>584F    EB <span class="number">0</span>D           jmp <span class="keyword">short</span> reverse_<span class="number">.011B</span>585E</div><div class="line"><span class="number">011B</span>5851    <span class="number">68</span> <span class="number">4</span>C7C1B01     push reverse_<span class="number">.011B</span>7C4C                   ; rigth flag!\n</div><div class="line"><span class="number">011B</span>5856    E8 D4BAFFFF     call reverse_<span class="number">.011B</span>132F</div><div class="line"><span class="number">011B</span>585B    <span class="number">83</span>C4 <span class="number">04</span>         add esp,<span class="number">0x4</span></div></pre></td></tr></table></figure>
+<h2 id="解题代码"><a href="#解题代码" class="headerlink" title="解题代码"></a>解题代码</h2><p>从上面的分析得出，该题通俗点说就是把输入的字符串进行 Base64编码，根据编码后的长度对编码后的字符串进行逐位加增加。<br>增加规则为 第0位+0x00  第1位+0x01 ….. 第N位+0x0N<br>最后对比的字符串为</p>
+<blockquote>
+<p>e3nifIH9b_C@n@dH</p>
+</blockquote>
+<p>python代码<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#coding=utf-8</span></div><div class="line"><span class="keyword">import</span> binascii,base64</div><div class="line"></div><div class="line">strA = <span class="string">'e3nifIH9b_C@n@dH'</span></div><div class="line">strB = <span class="string">''</span></div><div class="line"><span class="keyword">for</span> num <span class="keyword">in</span> range(<span class="number">0</span>,len(strA)):</div><div class="line">	strB = strB + chr(int(binascii.b2a_hex(strA[num]),<span class="number">16</span>) - num)</div><div class="line"><span class="keyword">print</span> base64.b64decode(strB)</div></pre></td></tr></table></figure></p>
+<h2 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h2><p><img src="http://upload-images.jianshu.io/upload_images/6671501-0bdd9658c4eb606f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>flag是：</p>
+<blockquote>
+<p>{i_l0ve_you}</p>
+</blockquote>
+<h2 id="测试是否正确"><a href="#测试是否正确" class="headerlink" title="测试是否正确"></a>测试是否正确</h2><p><img src="http://upload-images.jianshu.io/upload_images/6671501-63afa9d77b031c99.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>加密后的flag不是很长，有耐心的同学直接用calc计算也可以争取的结果，flag是表白么？如果做题的是妹子感觉也是很不错的。PS:别做梦了，妹子会玩windows逆向么？/滑稽脸</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/CrackMe/" rel="tag"># CrackMe</a>
+          
+            <a href="/tags/ctf/" rel="tag"># ctf</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/07/07/【CrackMe】Acid burn追码写注册机/" rel="next" title="【CrackMe】Acid burn追码写注册机">
+                <i class="fa fa-chevron-left"></i> 【CrackMe】Acid burn追码写注册机
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8yOTI5OC81ODY2"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://www.kongdewei.cn/images/tx.jpg"
+               alt="草莓丶" />
+          <p class="site-author-name" itemprop="name">草莓丶</p>
+           
+              <p class="site-description motion-element" itemprop="description">YWRtaW5Aa29uZ2Rld2VpLmNu==</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/8caomei" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-block">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://thief.one/" title="nmask'Blog" target="_blank">nmask'Blog</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#程序截图"><span class="nav-number">2.</span> <span class="nav-text">程序截图</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#错误提示"><span class="nav-number">2.1.</span> <span class="nav-text">错误提示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#验证方式"><span class="nav-number">2.2.</span> <span class="nav-text">验证方式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分析过程"><span class="nav-number">3.</span> <span class="nav-text">分析过程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#爆破关键点"><span class="nav-number">3.1.</span> <span class="nav-text">爆破关键点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解题代码"><span class="nav-number">3.2.</span> <span class="nav-text">解题代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行结果"><span class="nav-number">3.3.</span> <span class="nav-text">运行结果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测试是否正确"><span class="nav-number">3.4.</span> <span class="nav-text">测试是否正确</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">草莓丶</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
