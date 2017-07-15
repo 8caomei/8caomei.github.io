@@ -112,7 +112,7 @@
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/6671501-a4e73ac74643b8fd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/6671501-0bdd9658c4eb606f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/6671501-63afa9d77b031c99.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-07-15T08:09:54.686Z">
+<meta property="og:updated_time" content="2017-07-15T08:11:13.722Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【CrackMe】CTF题目-winodws逆向寻找flag">
 <meta name="twitter:description" content="前言这题目是命令行输入，OD关键位置时候有别于窗口程序，刚开始我是结合CE找到关键点。
@@ -385,8 +385,7 @@
 <a id="more"></a>
 <h1 id="程序截图"><a href="#程序截图" class="headerlink" title="程序截图"></a>程序截图</h1><p>之前在一个ctf平台上下载题目。<br><img src="http://upload-images.jianshu.io/upload_images/6671501-12ce52fab71d8d63.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
 <h2 id="错误提示"><a href="#错误提示" class="headerlink" title="错误提示"></a>错误提示</h2><p><img src="http://upload-images.jianshu.io/upload_images/6671501-06d7ca95cea4fd1a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p>##正确提示</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/6671501-63afa9d77b031c99.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h2 id="正确提示"><a href="#正确提示" class="headerlink" title="正确提示"></a>正确提示</h2><p><img src="http://upload-images.jianshu.io/upload_images/6671501-63afa9d77b031c99.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
 <h2 id="验证方式"><a href="#验证方式" class="headerlink" title="验证方式"></a>验证方式</h2><p>通过命令行输入flag，程序对输入信息进行加密运算后与存放在程序内的加密后数值进行比对。</p>
 <h1 id="分析过程"><a href="#分析过程" class="headerlink" title="分析过程"></a>分析过程</h1><p>一般载入程序跑起来之后是用过E标签，跳转到程序领空，再寻找关键字符串信息。</p>
 <p><img src="http://upload-images.jianshu.io/upload_images/6671501-ed25161662f2527c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>但这是命令行程序，载入直接就在程序领空，查找字符串</p>
@@ -628,7 +627,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#程序截图"><span class="nav-number">2.</span> <span class="nav-text">程序截图</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#错误提示"><span class="nav-number">2.1.</span> <span class="nav-text">错误提示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#验证方式"><span class="nav-number">2.2.</span> <span class="nav-text">验证方式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分析过程"><span class="nav-number">3.</span> <span class="nav-text">分析过程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#爆破关键点"><span class="nav-number">3.1.</span> <span class="nav-text">爆破关键点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解题代码"><span class="nav-number">3.2.</span> <span class="nav-text">解题代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行结果"><span class="nav-number">3.3.</span> <span class="nav-text">运行结果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测试是否正确"><span class="nav-number">3.4.</span> <span class="nav-text">测试是否正确</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#程序截图"><span class="nav-number">2.</span> <span class="nav-text">程序截图</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#错误提示"><span class="nav-number">2.1.</span> <span class="nav-text">错误提示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正确提示"><span class="nav-number">2.2.</span> <span class="nav-text">正确提示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#验证方式"><span class="nav-number">2.3.</span> <span class="nav-text">验证方式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分析过程"><span class="nav-number">3.</span> <span class="nav-text">分析过程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#爆破关键点"><span class="nav-number">3.1.</span> <span class="nav-text">爆破关键点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解题代码"><span class="nav-number">3.2.</span> <span class="nav-text">解题代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行结果"><span class="nav-number">3.3.</span> <span class="nav-text">运行结果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测试是否正确"><span class="nav-number">3.4.</span> <span class="nav-text">测试是否正确</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>
