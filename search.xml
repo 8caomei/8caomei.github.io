@@ -8,9 +8,10 @@
       <url>http://www.kongdewei.cn/2017/07/22/%E9%80%86%E5%90%91%E4%BF%AE%E6%94%B9%E8%8F%9C%E5%88%80%E8%BF%87%E5%AE%89%E5%85%A8%E7%8B%97/</url>
       <content type="html"><![CDATA[<h1 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h1><p>文章是去年写的，现在菜刀过狗也不是很难了，只是做一个逆向修改菜刀的演示。</p>
 <blockquote>
-<p>环境：Windows2003<br>中间件：iis6.0<br>安全狗版本：安全狗iis枸杞版3.5<br>菜刀：chopper.exe   md5: e2caee9b7844ea06d964ad138d1da1f9<br>工具：吾爱破解专用版Ollydbg，LordPE，C32ASM<br><a id="more"></a></p>
-<h1 id="尝试"><a href="#尝试" class="headerlink" title="尝试"></a>尝试</h1><p>主要是为了绕过安全狗的一句话检测，开启这个就行了。</p>
+<p>环境：Windows2003<br>中间件：iis6.0<br>安全狗版本：安全狗iis枸杞版3.5<br>菜刀：chopper.exe   md5: e2caee9b7844ea06d964ad138d1da1f9<br>工具：吾爱破解专用版Ollydbg，LordPE，C32ASM</p>
 </blockquote>
+<a id="more"></a>
+<h1 id="尝试"><a href="#尝试" class="headerlink" title="尝试"></a>尝试</h1><p>主要是为了绕过安全狗的一句话检测，开启这个就行了。</p>
 <p><img src="http://upload-images.jianshu.io/upload_images/6671501-7ce6ca36b8408f42.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>在IIS目录放一句话木马。</p>
 <p><img src="http://upload-images.jianshu.io/upload_images/6671501-6c03c7d090466f1d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
 <blockquote>
