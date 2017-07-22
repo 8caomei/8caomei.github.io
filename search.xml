@@ -4,6 +4,40 @@
   
     
     <entry>
+      <title><![CDATA[逆向修改菜刀过安全狗]]></title>
+      <url>http://www.kongdewei.cn/2017/07/22/%E9%80%86%E5%90%91%E4%BF%AE%E6%94%B9%E8%8F%9C%E5%88%80%E8%BF%87%E5%AE%89%E5%85%A8%E7%8B%97/</url>
+      <content type="html"><![CDATA[<h1 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h1><p>文章是去年写的，现在菜刀过狗也不是很难了，只是做一个逆向修改菜刀的演示。</p>
+<blockquote>
+<p>环境：Windows2003<br>中间件：iis6.0<br>安全狗版本：安全狗iis枸杞版3.5<br>菜刀：chopper.exe   md5: e2caee9b7844ea06d964ad138d1da1f9<br>工具：吾爱破解专用版Ollydbg，LordPE，C32ASM<br><a id="more"></a></p>
+<h1 id="尝试"><a href="#尝试" class="headerlink" title="尝试"></a>尝试</h1><p>主要是为了绕过安全狗的一句话检测，开启这个就行了。</p>
+</blockquote>
+<p><img src="http://upload-images.jianshu.io/upload_images/6671501-7ce6ca36b8408f42.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>在IIS目录放一句话木马。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/6671501-6c03c7d090466f1d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<blockquote>
+<p>GIF89<br>&lt;%eval request(“1”)%&gt;</p>
+</blockquote>
+<p>最普通的那种，并没有各种乱七八糟的变形之类的。<br>通过浏览器访问。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/6671501-1280958ff0e07b59.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>正常的，并没有被拦截。添加到菜刀列表，访问试试看。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/6671501-2b6727021ea9022d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>通过菜刀访问，被安全狗拦截了，打开fiddler看看封包。<br><img src="http://upload-images.jianshu.io/upload_images/6671501-90208c02991e4fc6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h1 id="分析修改"><a href="#分析修改" class="headerlink" title="分析修改"></a>分析修改</h1><p><img src="http://upload-images.jianshu.io/upload_images/6671501-0a857dc4738ef839.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>因为以前做过免杀，所以最早的时候没有各种工具可以定位，我是通过OD的一半一半法来定位被查杀的位置。<br>AAAAAAAAAAAAAAABBAAAAAAAAAAAAAAA<br>我当时的想法是，能不能运用在过WAF上，先把特征码对半，然后慢慢对被检测的补位进行定位。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/6671501-4af609276dd7bf15.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>去掉一般的封包重发，还是被拦截，看来特征在前半段。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/6671501-3e72a3306f5eefcf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>已经没有被拦截的提示，但是程序也是报错了，毕竟代码不完整，于是我想到了之前过安全狗的SQL注入是通过加很长很长的字符，然后就能绕过SQL注入检测，那么如果我给这段封包加很长的字符是不是也可以绕过。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/6671501-711be607093c7263.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>通过增加很长的前缀，就过掉了安全狗，但是如果我每个封包都这样拦截修改是不是太麻烦了。于是我想到了通过OD修改。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/6671501-e3af64410a651e61.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>原版的菜刀并没有加壳，可以直接修改，打开OD查看下字符串。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/6671501-f0d93d4c1ef0cf27.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>这个位置是ASP的原版字符串，通过这里修改就可以修改他的发包，但是因为需要增加的长多比较大，所以原程序并没有那么大的空地址段给我写，要自己另外增加区段。<br>上C32，新建一个文件，然后把前面的字符加进来。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/6671501-63598ee88c77e39f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>区段做好了，然后用PEid把区段加到程序里。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/6671501-20563fbdc384ea2c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>然后通过OD修改，字符串偏移位置。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/6671501-467b00f1381ca530.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>这里是004ab000</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/6671501-d380c6d28f8c51c1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>    保存下文件，然后用fiddler抓包查看是否天然带我们的字符串。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/6671501-095e2219b13404c6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>通过修改发包已经天然带字符串，当然不止修改一个地方，要完成ASP完成可用要修改好几处位置。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/6671501-8247ff4e790229f1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>刚开始我认为这些waf是完美的，后来我发现，这些防火墙有些类似于早点的杀毒软件，通过特征库来拦截，只要找对特征，就可以对症下药，不同品牌的防火墙规则不同，但是换汤不换药基本都是这样的套路，兵来将敌水来土堰靠规则并不靠谱，修改web程序中的漏洞才是关键，过度依赖防火墙并不能很好的保护网站。<br>jsp与php 版过防火墙：<a href="https://thief.one/2016/09/18/PyCmd-%E5%8A%A0%E5%AF%86%E9%9A%90%E5%BD%A2%E6%9C%A8%E9%A9%AC/" target="_blank" rel="external">PyCmd 加密隐形木马</a></p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[【CrackMe】CTF题目-winodws逆向寻找flag]]></title>
       <url>http://www.kongdewei.cn/2017/07/15/%E3%80%90CrackMe%E3%80%91CTF%E9%A2%98%E7%9B%AE-winodws%E9%80%86%E5%90%91%E5%AF%BB%E6%89%BEflag/</url>
       <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>这题目是命令行输入，OD关键位置时候有别于窗口程序，刚开始我是结合CE找到关键点。</p>
