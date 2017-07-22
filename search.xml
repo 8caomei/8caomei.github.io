@@ -33,7 +33,7 @@
 <p><img src="http://upload-images.jianshu.io/upload_images/6671501-d380c6d28f8c51c1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>    保存下文件，然后用fiddler抓包查看是否天然带我们的字符串。</p>
 <p><img src="http://upload-images.jianshu.io/upload_images/6671501-095e2219b13404c6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>通过修改发包已经天然带字符串，当然不止修改一个地方，要完成ASP完成可用要修改好几处位置。</p>
 <p><img src="http://upload-images.jianshu.io/upload_images/6671501-8247ff4e790229f1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>刚开始我认为这些waf是完美的，后来我发现，这些防火墙有些类似于早点的杀毒软件，通过特征库来拦截，只要找对特征，就可以对症下药，不同品牌的防火墙规则不同，但是换汤不换药基本都是这样的套路，兵来将敌水来土堰靠规则并不靠谱，修改web程序中的漏洞才是关键，过度依赖防火墙并不能很好的保护网站。<br>jsp与php 版过防火墙：<a href="https://thief.one/2016/09/18/PyCmd-%E5%8A%A0%E5%AF%86%E9%9A%90%E5%BD%A2%E6%9C%A8%E9%A9%AC/" target="_blank" rel="external">PyCmd 加密隐形木马</a></p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>刚开始我认为这些waf是完美的，后来我发现，这些防火墙有些类似于早点的杀毒软件，通过特征库来拦截，只要找对特征，就可以对症下药，不同品牌的防火墙规则不同，但是换汤不换药基本都是这样的套路，兵来将敌水来土堰靠规则并不靠谱，修改web程序中的漏洞才是关键，过度依赖防火墙并不能很好的保护网站。<br>jsp与php 版过防火墙：<a href="http://www.freebuf.com/sectool/140421.html" target="_blank" rel="external">PyCmd 加密隐形木马</a></p>
 ]]></content>
     </entry>
     
