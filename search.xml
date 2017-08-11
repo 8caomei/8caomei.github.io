@@ -4,6 +4,99 @@
   
     
     <entry>
+      <title><![CDATA[看我如何搭建一款方便易用的云WAF]]></title>
+      <url>http://www.kongdewei.cn/2017/08/11/%E7%9C%8B%E6%88%91%E5%A6%82%E4%BD%95%E6%90%AD%E5%BB%BA%E4%B8%80%E6%AC%BE%E6%96%B9%E4%BE%BF%E6%98%93%E7%94%A8%E7%9A%84%E4%BA%91WAF/</url>
+      <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>当前市面上各种云WAF，主要作用有两个一个是CDN加速，另一个就是做云防护，原理大概就是把域名IP解析权移交WAF提供商，通过他们访问回目标服务器ip，可以隐藏服务器的真实IP。感谢<a href="http://www.caiyongjian.cn" target="_blank" rel="external">菜菜</a>指导。</p>
+<blockquote>
+<p>环境：<br>Ubuntu 16.04.1 LTS<br>Mysql<br>Ngnix</p>
+</blockquote>
+<a id="more"></a>
+<p>我们使用的是这款云WAF<br><a href="https://waf.xsec.io/" target="_blank" rel="external">https://waf.xsec.io/</a><br><a href="https://github.com/xsec-lab" target="_blank" rel="external">https://github.com/xsec-lab</a></p>
+<h1 id="下载与安装"><a href="#下载与安装" class="headerlink" title="下载与安装"></a>下载与安装</h1><p>直接且到root用户下执行命令</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/6671501-67317746f1c01a9e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>安装openresty</p>
+<blockquote>
+<p>apt-get update<br>apt-get install libreadline-dev libncurses5-dev libpcre3-dev libssl-dev perl make build-essential<br>sudo ln -s /sbin/ldconfig /usr/bin/ldconfig<br>wget <a href="https://openresty.org/download/openresty-1.9.15.1.tar.gz" target="_blank" rel="external">https://openresty.org/download/openresty-1.9.15.1.tar.gz</a><br>tar -zxvf openresty-1.9.15.1.tar.gz<br>cd openresty-1.9.15.1<br>./configure<br>make &amp;&amp; sudo make install</p>
+</blockquote>
+<p>如果出现如下错误提示<br><img src="http://upload-images.jianshu.io/upload_images/6671501-c2e2c884735c1c7d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>解决方法</p>
+<blockquote>
+<p>rm /var/cache/apt/archives/lock<br>rm /var/lib/dpkg/lock</p>
+</blockquote>
+<p>安装 git</p>
+<blockquote>
+<p>apt-get install git</p>
+</blockquote>
+<p>安装mysql</p>
+<blockquote>
+<p>apt-get install mysql-server</p>
+</blockquote>
+<p>安装vim</p>
+<blockquote>
+<p>apt-get install vim</p>
+</blockquote>
+<p>配置root密码，我这里直接写123456了，后面还会在重复填写一次。<br><img src="http://upload-images.jianshu.io/upload_images/6671501-a5faca980cf84cd0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h1 id="waf部署与配置"><a href="#waf部署与配置" class="headerlink" title="waf部署与配置"></a>waf部署与配置</h1><p>将x-waf的代码目录放置到openresty的/usr/local/openresty/nginx/conf目录下，然后在openresty的conf的目录下新建vhosts目录</p>
+<blockquote>
+<p>cd /usr/local/openresty/nginx/conf/<br>git clone <a href="https://github.com/xsec-lab/x-waf.git" target="_blank" rel="external">https://github.com/xsec-lab/x-waf.git</a><br>mkdir vhosts</p>
+</blockquote>
+<p>备份nginx原配置文件</p>
+<blockquote>
+<p>cp nginx.conf nginx.conf.bak<br>rm nginx.conf<br>vim nginx.conf</p>
+</blockquote>
+<p>复制下面的代码，粘贴进去,粘贴进去后保存，然后使用cat命令查看下第一行粘贴是否完整，有的时候第一行会漏掉几个字符，造成nginx报错。<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div></pre></td><td class="code"><pre><div class="line">################user  nginx;</div><div class="line">worker_processes auto;</div><div class="line">worker_cpu_affinity auto;</div><div class="line"></div><div class="line">#error_log  logs/error.log;</div><div class="line">#error_log  logs/error.log  debug;</div><div class="line">#error_log  logs/error.log  info;</div><div class="line"></div><div class="line">#pid        logs/nginx.pid;</div><div class="line"></div><div class="line">events &#123;</div><div class="line">    worker_connections  409600;</div><div class="line">&#125;</div><div class="line"></div><div class="line">http &#123;</div><div class="line">    include       mime.types;</div><div class="line">    lua_package_path "/usr/local/openresty/nginx/conf/x-waf/?.lua;/usr/local/lib/lua/?.lua;;";</div><div class="line">    lua_shared_dict limit 100m;</div><div class="line">    lua_shared_dict badGuys 100m;</div><div class="line">    default_type  application/octet-stream;</div><div class="line"></div><div class="line">    #开启lua代码缓存功能</div><div class="line">    lua_code_cache on;</div><div class="line"></div><div class="line">    init_by_lua_file /usr/local/openresty/nginx/conf/x-waf/init.lua;</div><div class="line">    access_by_lua_file /usr/local/openresty/nginx/conf/x-waf/access.lua;</div><div class="line"></div><div class="line">    #log_format shield_access    '$remote_addr - $http_host - "$request" - "$http_cookie"';</div><div class="line">    #access_log pipe:/usr/local/shield/redisclient shield_access;</div><div class="line">    </div><div class="line">    #ssl on;</div><div class="line">    #ssl_certificate certs/cert_chain.crt;</div><div class="line">    #ssl_certificate_key certs/server.key;</div><div class="line">    ssl_session_timeout     5m;</div><div class="line">    ssl_protocols SSLv2 SSLv3 TLSv1;</div><div class="line">    ssl_ciphers ALL:!ADH:!EXPORT56:RC4+RSA:+HIGH:+MEDIUM:+LOW:+SSLv2:+EXP;</div><div class="line">    ssl_prefer_server_ciphers on;</div><div class="line"></div><div class="line"></div><div class="line">    sendfile        on;</div><div class="line">    #tcp_nopush     on;</div><div class="line"></div><div class="line">    #keepalive_timeout  0;</div><div class="line">    keepalive_timeout  65;</div><div class="line"> </div><div class="line">    #gzip  on;</div><div class="line">    include vhosts/*.conf;</div><div class="line"></div><div class="line">    server &#123;</div><div class="line">        listen       80;</div><div class="line">        server_name  localhost;</div><div class="line"></div><div class="line">        #charset koi8-r;</div><div class="line"></div><div class="line">        #access_log  logs/host.access.log  main;</div><div class="line"></div><div class="line">        location / &#123;</div><div class="line">            root   html;</div><div class="line">            index  index.html index.htm;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>新建nginx日志目录</p>
+<blockquote>
+<p>cd /var/log/<br>mkdir nginx</p>
+</blockquote>
+<p>测试nginx配置是否正确</p>
+<blockquote>
+<p>/usr/local/openresty/nginx/sbin/nginx -t</p>
+</blockquote>
+<p>出现如下提示则配置正确<br><img src="http://upload-images.jianshu.io/upload_images/6671501-c9cfc8232ee44e8a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>启动waf</p>
+<blockquote>
+<p>/usr/local/openresty/nginx/sbin/nginx</p>
+</blockquote>
+<p>使用命令访问</p>
+<blockquote>
+<p>curl <a href="http://127.0.0.1/\?id\=1%20union%20select%201,2,3" target="_blank" rel="external">http://127.0.0.1/\?id\=1%20union%20select%201,2,3</a></p>
+</blockquote>
+<p>浏览器访问</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/6671501-062148d75c420c33.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h1 id="安装后台"><a href="#安装后台" class="headerlink" title="安装后台"></a>安装后台</h1><p>git上作者提供的教程需要使用go编译，我这里直接提供一个编译好的包。</p>
+<blockquote>
+<p><a href="http://download.csdn.net/download/dad9988/9929074" target="_blank" rel="external">http://download.csdn.net/download/dad9988/9929074</a></p>
+</blockquote>
+<p>创建mysql数据库</p>
+<blockquote>
+<p>mysql -u root -p<br>Create Database waf;</p>
+</blockquote>
+<p>配置后台</p>
+<blockquote>
+<p>tar -xvf x-waf-admin0.1-linux-amd64.tar.gz<br>cd x-waf-admin<br>cd conf<br>vim app.ini</p>
+</blockquote>
+<p>修改数据库帐号密码，以及API_SERVERS</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/6671501-bb0d1d1ad6f83eae.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>启动后台,x-waf-admin目录中启动server</p>
+<blockquote>
+<p>./server</p>
+</blockquote>
+<p>默认帐号admin，密码为：x@xsec.io</p>
+<h1 id="配置反向代理"><a href="#配置反向代理" class="headerlink" title="配置反向代理"></a>配置反向代理</h1><p><img src="http://upload-images.jianshu.io/upload_images/6671501-e24d8355e30803c4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>新增一个后端节点，我这里直接用我的博客<a href="http://kongdewei.cn" target="_blank" rel="external">http://kongdewei.cn</a><br>这里的151.101.72.133直接ping自己的域名就可以获得<br><img src="http://upload-images.jianshu.io/upload_images/6671501-5c4599e1f42f917c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>保存返回，然后选择同步全部后端配置，出现如下提示则配置正确。<br><img src="http://upload-images.jianshu.io/upload_images/6671501-d78b3873f5397be3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>修改hosts指向</p>
+<blockquote>
+<p>vim /etc/hosts</p>
+</blockquote>
+<p>这里我就直接修改hosts文件指向本地，就不修改域名解析了。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/6671501-59269bb922daa05d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>测试访问<br><img src="http://upload-images.jianshu.io/upload_images/6671501-cb18969e3b7a6a8e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>添加恶意参数查看是否拦截</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/6671501-282dfe57617ec588.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>规则的添加与删除在web后台直接可以操作</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/6671501-0aeb285ad09108d3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>编写参考<a href="https://waf.xsec.io/docs" target="_blank" rel="external">https://waf.xsec.io/docs</a><br>最初安装配置的时候走了一些弯路，在<a href="http://www.caiyongjian.cn" target="_blank" rel="external">菜菜</a>的指导最终配置成功，关于waf的规则需要自己慢慢收集，最近有人逆向了阿里云waf，有逆向功底的小伙伴可以尝试对成熟的产品进行逆向，挖掘一下他们的规则，添加进去，逆向waf就和他们的一样好用了。</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[逆向修改菜刀过安全狗]]></title>
       <url>http://www.kongdewei.cn/2017/07/22/%E9%80%86%E5%90%91%E4%BF%AE%E6%94%B9%E8%8F%9C%E5%88%80%E8%BF%87%E5%AE%89%E5%85%A8%E7%8B%97/</url>
       <content type="html"><![CDATA[<h1 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h1><p>文章是去年写的，现在菜刀过狗也不是很难了，只是做一个逆向修改菜刀的演示。</p>
