@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="ctf,CrackMe," />
+  <meta name="keywords" content="CrackMe,ctf," />
 
 
 
@@ -89,22 +89,22 @@
 <meta property="og:description" content="前言这题目是命令行输入，OD关键位置时候有别于窗口程序，刚开始我是结合CE找到关键点。
 
 程序下载地址：http://download.csdn.net/detail/dad9988/9899751难度：★使用工具：ollydbg吾爱破解专版运行环境：windows 7 x64">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/6671501-12ce52fab71d8d63.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/6671501-06d7ca95cea4fd1a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/6671501-63afa9d77b031c99.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/6671501-ed25161662f2527c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/6671501-91cb525e003720a7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/6671501-e1dc5851387a9629.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/6671501-a4e73ac74643b8fd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/6671501-0bdd9658c4eb606f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/6671501-63afa9d77b031c99.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-08-13T12:47:47.000Z">
+<meta property="og:image" content="http://www.kongdewei.cn/images/jt/6671501-12ce52fab71d8d63.png">
+<meta property="og:image" content="http://www.kongdewei.cn/images/jt/6671501-06d7ca95cea4fd1a.png">
+<meta property="og:image" content="http://www.kongdewei.cn/images/jt/6671501-63afa9d77b031c99.png">
+<meta property="og:image" content="http://www.kongdewei.cn/images/jt/6671501-ed25161662f2527c.png">
+<meta property="og:image" content="http://www.kongdewei.cn/images/jt/6671501-91cb525e003720a7.png">
+<meta property="og:image" content="http://www.kongdewei.cn/images/jt/6671501-e1dc5851387a9629.png">
+<meta property="og:image" content="http://www.kongdewei.cn/images/jt/6671501-a4e73ac74643b8fd.png">
+<meta property="og:image" content="http://www.kongdewei.cn/images/jt/6671501-0bdd9658c4eb606f.png">
+<meta property="og:image" content="http://www.kongdewei.cn/images/jt/6671501-63afa9d77b031c99.png">
+<meta property="og:updated_time" content="2020-01-07T06:25:57.539Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【CrackMe】CTF题目-winodws逆向寻找flag">
 <meta name="twitter:description" content="前言这题目是命令行输入，OD关键位置时候有别于窗口程序，刚开始我是结合CE找到关键点。
 
 程序下载地址：http://download.csdn.net/detail/dad9988/9899751难度：★使用工具：ollydbg吾爱破解专版运行环境：windows 7 x64">
-<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/6671501-12ce52fab71d8d63.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:image" content="http://www.kongdewei.cn/images/jt/6671501-12ce52fab71d8d63.png">
 
 
 
@@ -383,20 +383,20 @@
 <p>程序下载地址：<a href="http://download.csdn.net/detail/dad9988/9899751" target="_blank" rel="external">http://download.csdn.net/detail/dad9988/9899751</a><br>难度：★<br>使用工具：ollydbg吾爱破解专版<br>运行环境：windows 7 x64</p>
 </blockquote>
 <a id="more"></a>
-<h1 id="程序截图"><a href="#程序截图" class="headerlink" title="程序截图"></a>程序截图</h1><p>之前在一个ctf平台上下载题目。<br><img src="http://upload-images.jianshu.io/upload_images/6671501-12ce52fab71d8d63.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<h2 id="错误提示"><a href="#错误提示" class="headerlink" title="错误提示"></a>错误提示</h2><p><img src="http://upload-images.jianshu.io/upload_images/6671501-06d7ca95cea4fd1a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<h2 id="正确提示"><a href="#正确提示" class="headerlink" title="正确提示"></a>正确提示</h2><p><img src="http://upload-images.jianshu.io/upload_images/6671501-63afa9d77b031c99.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h1 id="程序截图"><a href="#程序截图" class="headerlink" title="程序截图"></a>程序截图</h1><p>之前在一个ctf平台上下载题目。<br><img src="/images/jt/6671501-12ce52fab71d8d63.png" alt=""></p>
+<h2 id="错误提示"><a href="#错误提示" class="headerlink" title="错误提示"></a>错误提示</h2><p><img src="/images/jt/6671501-06d7ca95cea4fd1a.png" alt=""></p>
+<h2 id="正确提示"><a href="#正确提示" class="headerlink" title="正确提示"></a>正确提示</h2><p><img src="/images/jt/6671501-63afa9d77b031c99.png" alt=""></p>
 <h2 id="验证方式"><a href="#验证方式" class="headerlink" title="验证方式"></a>验证方式</h2><p>通过命令行输入flag，程序对输入信息进行加密运算后与存放在程序内的加密后数值进行比对。</p>
 <h1 id="分析过程"><a href="#分析过程" class="headerlink" title="分析过程"></a>分析过程</h1><p>一般载入程序跑起来之后是用过E标签，跳转到程序领空，再寻找关键字符串信息。</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/6671501-ed25161662f2527c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>但这是命令行程序，载入直接就在程序领空，查找字符串</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/6671501-91cb525e003720a7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><img src="/images/jt/6671501-ed25161662f2527c.png" alt=""><br>但这是命令行程序，载入直接就在程序领空，查找字符串</p>
+<p><img src="/images/jt/6671501-91cb525e003720a7.png" alt=""></p>
 <p>很容易看到一串很可能是flag的东西，直接拿来输入试试看。</p>
 <blockquote>
 <p>e3nifIH9b_C@n@dH</p>
 </blockquote>
-<p><img src="http://upload-images.jianshu.io/upload_images/6671501-e1dc5851387a9629.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><img src="/images/jt/6671501-e1dc5851387a9629.png" alt=""></p>
 <p>提示错误，并不是那么简单直接进行明文字符对比。</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/6671501-a4e73ac74643b8fd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><img src="/images/jt/6671501-a4e73ac74643b8fd.png" alt=""></p>
 <p>在提示输入flag的地方下断<br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="number">011B</span>5758    <span class="number">68</span> <span class="number">747B</span>1B01     push reverse_<span class="number">.011B</span>7B74                   ; please enter the flag:</div></pre></td></tr></table></figure></p>
 <p>F8步下，随意输入123456回车继续F8步下</p>
 <p>关键运算如下</p>
@@ -412,12 +412,12 @@
 <p>e3nifIH9b_C@n@dH</p>
 </blockquote>
 <p>python代码<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#coding=utf-8</span></div><div class="line"><span class="keyword">import</span> binascii,base64</div><div class="line"></div><div class="line">strA = <span class="string">'e3nifIH9b_C@n@dH'</span></div><div class="line">strB = <span class="string">''</span></div><div class="line"><span class="keyword">for</span> num <span class="keyword">in</span> range(<span class="number">0</span>,len(strA)):</div><div class="line">	strB = strB + chr(int(binascii.b2a_hex(strA[num]),<span class="number">16</span>) - num)</div><div class="line"><span class="keyword">print</span> base64.b64decode(strB)</div></pre></td></tr></table></figure></p>
-<h2 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h2><p><img src="http://upload-images.jianshu.io/upload_images/6671501-0bdd9658c4eb606f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h2 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h2><p><img src="/images/jt/6671501-0bdd9658c4eb606f.png" alt=""></p>
 <p>flag是：</p>
 <blockquote>
 <p>{i_l0ve_you}</p>
 </blockquote>
-<h2 id="测试是否正确"><a href="#测试是否正确" class="headerlink" title="测试是否正确"></a>测试是否正确</h2><p><img src="http://upload-images.jianshu.io/upload_images/6671501-63afa9d77b031c99.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h2 id="测试是否正确"><a href="#测试是否正确" class="headerlink" title="测试是否正确"></a>测试是否正确</h2><p><img src="/images/jt/6671501-63afa9d77b031c99.png" alt=""></p>
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>加密后的flag不是很长，有耐心的同学直接用calc计算也可以争取的结果，flag是表白么？如果做题的是妹子感觉也是很不错的。PS:别做梦了，妹子会玩windows逆向么？/滑稽脸</p>
 
       
@@ -436,9 +436,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/ctf/" rel="tag"># ctf</a>
-          
             <a href="/tags/CrackMe/" rel="tag"># CrackMe</a>
+          
+            <a href="/tags/ctf/" rel="tag"># ctf</a>
           
         </div>
       

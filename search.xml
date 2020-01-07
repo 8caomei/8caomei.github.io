@@ -175,20 +175,20 @@
 <p>程序下载地址：<a href="http://download.csdn.net/detail/dad9988/9899751" target="_blank" rel="external">http://download.csdn.net/detail/dad9988/9899751</a><br>难度：★<br>使用工具：ollydbg吾爱破解专版<br>运行环境：windows 7 x64</p>
 </blockquote>
 <a id="more"></a>
-<h1 id="程序截图"><a href="#程序截图" class="headerlink" title="程序截图"></a>程序截图</h1><p>之前在一个ctf平台上下载题目。<br><img src="http://upload-images.jianshu.io/upload_images/6671501-12ce52fab71d8d63.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<h2 id="错误提示"><a href="#错误提示" class="headerlink" title="错误提示"></a>错误提示</h2><p><img src="http://upload-images.jianshu.io/upload_images/6671501-06d7ca95cea4fd1a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<h2 id="正确提示"><a href="#正确提示" class="headerlink" title="正确提示"></a>正确提示</h2><p><img src="http://upload-images.jianshu.io/upload_images/6671501-63afa9d77b031c99.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h1 id="程序截图"><a href="#程序截图" class="headerlink" title="程序截图"></a>程序截图</h1><p>之前在一个ctf平台上下载题目。<br><img src="/images/jt/6671501-12ce52fab71d8d63.png" alt=""></p>
+<h2 id="错误提示"><a href="#错误提示" class="headerlink" title="错误提示"></a>错误提示</h2><p><img src="/images/jt/6671501-06d7ca95cea4fd1a.png" alt=""></p>
+<h2 id="正确提示"><a href="#正确提示" class="headerlink" title="正确提示"></a>正确提示</h2><p><img src="/images/jt/6671501-63afa9d77b031c99.png" alt=""></p>
 <h2 id="验证方式"><a href="#验证方式" class="headerlink" title="验证方式"></a>验证方式</h2><p>通过命令行输入flag，程序对输入信息进行加密运算后与存放在程序内的加密后数值进行比对。</p>
 <h1 id="分析过程"><a href="#分析过程" class="headerlink" title="分析过程"></a>分析过程</h1><p>一般载入程序跑起来之后是用过E标签，跳转到程序领空，再寻找关键字符串信息。</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/6671501-ed25161662f2527c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>但这是命令行程序，载入直接就在程序领空，查找字符串</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/6671501-91cb525e003720a7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><img src="/images/jt/6671501-ed25161662f2527c.png" alt=""><br>但这是命令行程序，载入直接就在程序领空，查找字符串</p>
+<p><img src="/images/jt/6671501-91cb525e003720a7.png" alt=""></p>
 <p>很容易看到一串很可能是flag的东西，直接拿来输入试试看。</p>
 <blockquote>
 <p>e3nifIH9b_C@n@dH</p>
 </blockquote>
-<p><img src="http://upload-images.jianshu.io/upload_images/6671501-e1dc5851387a9629.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><img src="/images/jt/6671501-e1dc5851387a9629.png" alt=""></p>
 <p>提示错误，并不是那么简单直接进行明文字符对比。</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/6671501-a4e73ac74643b8fd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><img src="/images/jt/6671501-a4e73ac74643b8fd.png" alt=""></p>
 <p>在提示输入flag的地方下断<br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="number">011B</span>5758    <span class="number">68</span> <span class="number">747B</span>1B01     push reverse_<span class="number">.011B</span>7B74                   ; please enter the flag:</div></pre></td></tr></table></figure></p>
 <p>F8步下，随意输入123456回车继续F8步下</p>
 <p>关键运算如下</p>
@@ -204,12 +204,12 @@
 <p>e3nifIH9b_C@n@dH</p>
 </blockquote>
 <p>python代码<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#coding=utf-8</span></div><div class="line"><span class="keyword">import</span> binascii,base64</div><div class="line"></div><div class="line">strA = <span class="string">'e3nifIH9b_C@n@dH'</span></div><div class="line">strB = <span class="string">''</span></div><div class="line"><span class="keyword">for</span> num <span class="keyword">in</span> range(<span class="number">0</span>,len(strA)):</div><div class="line">	strB = strB + chr(int(binascii.b2a_hex(strA[num]),<span class="number">16</span>) - num)</div><div class="line"><span class="keyword">print</span> base64.b64decode(strB)</div></pre></td></tr></table></figure></p>
-<h2 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h2><p><img src="http://upload-images.jianshu.io/upload_images/6671501-0bdd9658c4eb606f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h2 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h2><p><img src="/images/jt/6671501-0bdd9658c4eb606f.png" alt=""></p>
 <p>flag是：</p>
 <blockquote>
 <p>{i_l0ve_you}</p>
 </blockquote>
-<h2 id="测试是否正确"><a href="#测试是否正确" class="headerlink" title="测试是否正确"></a>测试是否正确</h2><p><img src="http://upload-images.jianshu.io/upload_images/6671501-63afa9d77b031c99.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h2 id="测试是否正确"><a href="#测试是否正确" class="headerlink" title="测试是否正确"></a>测试是否正确</h2><p><img src="/images/jt/6671501-63afa9d77b031c99.png" alt=""></p>
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>加密后的flag不是很长，有耐心的同学直接用calc计算也可以争取的结果，flag是表白么？如果做题的是妹子感觉也是很不错的。PS:别做梦了，妹子会玩windows逆向么？/滑稽脸</p>
 ]]></content>
     </entry>
@@ -267,11 +267,11 @@
 <p><a href="https://dl.google.com/dl/android/studio/install/2.3.2.0/android-studio-bundle-162.3934792-windows.exe" target="_blank" rel="external">https://dl.google.com/dl/android/studio/install/2.3.2.0/android-studio-bundle-162.3934792-windows.exe</a></p>
 </blockquote>
 <p>非常神奇，可以不翻(河蟹)墙下载,看来G(河蟹)F(河蟹)W对程序员还是很友善的。<br>android studio集成了所需要的东西，以前eclipse需要另外装各种东西方便很多。</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/6671501-0ff9957faf920f69.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="IDM下载中..."></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/6671501-1b330e974557138a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="next"></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/6671501-4b74a8c3d2b850f2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="如果C盘空间不够可以修改下盘符"></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/6671501-0ffa98fe15afbbb0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Setup Load..."></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/6671501-09ebd5a4860ef4dd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="sdk包安装"></p>
+<p><img src="/images/jt/6671501-0ff9957faf920f69.png" alt="IDM下载中..."></p>
+<p><img src="/images/jt/6671501-1b330e974557138a.png" alt="next"></p>
+<p><img src="/images/jt/6671501-4b74a8c3d2b850f2.png" alt="如果C盘空间不够可以修改下盘符"></p>
+<p><img src="/images/jt/6671501-0ffa98fe15afbbb0.png" alt="Setup Load..."></p>
+<p><img src="/images/jt/6671501-09ebd5a4860ef4dd.png" alt="sdk包安装"></p>
 <h2 id="下载、安装模拟器"><a href="#下载、安装模拟器" class="headerlink" title="下载、安装模拟器"></a>下载、安装模拟器</h2><blockquote>
 <p> 推荐使用这款模拟器<br><a href="https://www.yeshen.com/" target="_blank" rel="external">https://www.yeshen.com/</a></p>
 </blockquote>
@@ -280,47 +280,47 @@
 <blockquote>
 <p>下载地址：<br> <a href="http://www.52pojie.cn/thread-399571-1-1.html" target="_blank" rel="external">http://www.52pojie.cn/thread-399571-1-1.html</a></p>
 </blockquote>
-<h1 id="0x02-实战操作"><a href="#0x02-实战操作" class="headerlink" title="0x02 实战操作"></a>0x02 实战操作</h1><h2 id="解包与导入工程到Android-Studio"><a href="#解包与导入工程到Android-Studio" class="headerlink" title="解包与导入工程到Android Studio"></a>解包与导入工程到Android Studio</h2><p>首先使用apk改之理解包，直接用改之理打开apk包即可，改之理目录下就会有解包后的文件。<br><img src="http://upload-images.jianshu.io/upload_images/6671501-9d6eae63eac2fdda.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p>work目录下是解包后的文件<br><img src="http://upload-images.jianshu.io/upload_images/6671501-9421f700c00b79cb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p>打开Android Studio选Import project<br><img src="http://upload-images.jianshu.io/upload_images/6671501-a2021403a52a1e8e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p>选择刚才的解包目录<br><img src="http://upload-images.jianshu.io/upload_images/6671501-a3d2fc495f199a35.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p>直接next到底<br><img src="http://upload-images.jianshu.io/upload_images/6671501-e39da56d7e66038d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/6671501-ce072ea9d6f6cf07.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p>导入后会有一段时间的加载文件。<br><img src="http://upload-images.jianshu.io/upload_images/6671501-83cbdb690d570c87.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<h2 id="安装smalidea"><a href="#安装smalidea" class="headerlink" title="安装smalidea"></a>安装smalidea</h2><p>File—&gt;Settings—&gt;Install plugin from disk<br><img src="http://upload-images.jianshu.io/upload_images/6671501-a0e92fc66131213e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h1 id="0x02-实战操作"><a href="#0x02-实战操作" class="headerlink" title="0x02 实战操作"></a>0x02 实战操作</h1><h2 id="解包与导入工程到Android-Studio"><a href="#解包与导入工程到Android-Studio" class="headerlink" title="解包与导入工程到Android Studio"></a>解包与导入工程到Android Studio</h2><p>首先使用apk改之理解包，直接用改之理打开apk包即可，改之理目录下就会有解包后的文件。<br><img src="/images/jt/6671501-9d6eae63eac2fdda.png" alt=""></p>
+<p>work目录下是解包后的文件<br><img src="/images/jt/6671501-9421f700c00b79cb.png" alt=""></p>
+<p>打开Android Studio选Import project<br><img src="/images/jt/6671501-a2021403a52a1e8e.png" alt=""></p>
+<p>选择刚才的解包目录<br><img src="/images/jt/6671501-a3d2fc495f199a35.png" alt=""></p>
+<p>直接next到底<br><img src="/images/jt/6671501-e39da56d7e66038d.png" alt=""></p>
+<p><img src="/images/jt/6671501-ce072ea9d6f6cf07.png" alt=""></p>
+<p>导入后会有一段时间的加载文件。<br><img src="/images/jt/6671501-83cbdb690d570c87.png" alt=""></p>
+<h2 id="安装smalidea"><a href="#安装smalidea" class="headerlink" title="安装smalidea"></a>安装smalidea</h2><p>File—&gt;Settings—&gt;Install plugin from disk<br><img src="/images/jt/6671501-a0e92fc66131213e.png" alt=""></p>
 <blockquote>
 <p>下载smalidea-0.05.zip(这一步只需要做一次)<br><a href="https://bitbucket.org/JesusFreke/smali/downloads/" target="_blank" rel="external">https://bitbucket.org/JesusFreke/smali/downloads/</a></p>
 </blockquote>
-<p>选择刚下载的smalidea-0.05.zip<br><img src="http://upload-images.jianshu.io/upload_images/6671501-35fde0adcdf1314c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p>导入需要重启一下。<br><img src="http://upload-images.jianshu.io/upload_images/6671501-39ed20c0bd810ace.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<h2 id="寻找命令行启动参数"><a href="#寻找命令行启动参数" class="headerlink" title="寻找命令行启动参数"></a>寻找命令行启动参数</h2><p>改之理解包目录下打开AndroidManifest.xml,记录activity层的android:name值。<br><img src="http://upload-images.jianshu.io/upload_images/6671501-970dcf1884ae77da.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<h2 id="adb-shell启动apk"><a href="#adb-shell启动apk" class="headerlink" title="adb shell启动apk"></a>adb shell启动apk</h2><p>运行模拟器，在Android Studio中启动android device monitor<br><img src="http://upload-images.jianshu.io/upload_images/6671501-06eb42c39e71bc55.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>选择刚下载的smalidea-0.05.zip<br><img src="/images/jt/6671501-35fde0adcdf1314c.png" alt=""></p>
+<p>导入需要重启一下。<br><img src="/images/jt/6671501-39ed20c0bd810ace.png" alt=""></p>
+<h2 id="寻找命令行启动参数"><a href="#寻找命令行启动参数" class="headerlink" title="寻找命令行启动参数"></a>寻找命令行启动参数</h2><p>改之理解包目录下打开AndroidManifest.xml,记录activity层的android:name值。<br><img src="/images/jt/6671501-970dcf1884ae77da.png" alt=""></p>
+<h2 id="adb-shell启动apk"><a href="#adb-shell启动apk" class="headerlink" title="adb shell启动apk"></a>adb shell启动apk</h2><p>运行模拟器，在Android Studio中启动android device monitor<br><img src="/images/jt/6671501-06eb42c39e71bc55.png" alt=""></p>
 <p>一般会自动链接到ADM中，如果没有自动链接上去使用以下命令进行链接。</p>
 <blockquote>
 <p>我推荐的这个模拟器是链接62001其他模拟器自查<br>adb connect 127.0.0.1:62001</p>
 </blockquote>
-<p><img src="http://upload-images.jianshu.io/upload_images/6671501-e200faeb86605d67.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><img src="/images/jt/6671501-e200faeb86605d67.png" alt=""></p>
 <p>安装apk到模拟器（apk直接拉进去就自动安装了），并使用命令启动apk（adb如果未找到命令，请百度如何解决。）</p>
 <blockquote>
 <p>adb shell am start -D -n com.didictf.hellolibs/com.didictf.hellolibs.MainActivity  </p>
 </blockquote>
-<p>运行命令后可通过adm看到有个红色的虫子图标，这个时候apk已经挂起等待调试了。<br><img src="http://upload-images.jianshu.io/upload_images/6671501-963bfb9e628a5101.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>运行命令后可通过adm看到有个红色的虫子图标，这个时候apk已经挂起等待调试了。<br><img src="/images/jt/6671501-963bfb9e628a5101.png" alt=""></p>
 <p>在MainActivity下的OnCreate函数下断点</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/6671501-cf257366c18855c5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p>点击如图的三角，选择Edit Configurations<br><img src="http://upload-images.jianshu.io/upload_images/6671501-72ed6d4addc5086f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p>点击加号，选择Remote<br><img src="http://upload-images.jianshu.io/upload_images/6671501-6b53281823c9737b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p>修改port为8700点击OK<br><img src="http://upload-images.jianshu.io/upload_images/6671501-e214767c2a03d0a4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><img src="/images/jt/6671501-cf257366c18855c5.png" alt=""></p>
+<p>点击如图的三角，选择Edit Configurations<br><img src="/images/jt/6671501-72ed6d4addc5086f.png" alt=""></p>
+<p>点击加号，选择Remote<br><img src="/images/jt/6671501-6b53281823c9737b.png" alt=""></p>
+<p>修改port为8700点击OK<br><img src="/images/jt/6671501-e214767c2a03d0a4.png" alt=""></p>
 <p>点击调试按钮挂载到模拟器中</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/6671501-cc40db725d7f6db4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><img src="/images/jt/6671501-cc40db725d7f6db4.png" alt=""></p>
 <p>已经断在我们下的断点。</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/6671501-d2556f41ea49bfa1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><img src="/images/jt/6671501-d2556f41ea49bfa1.png" alt=""></p>
 <h1 id="0x03-调试"><a href="#0x03-调试" class="headerlink" title="0x03 调试"></a>0x03 调试</h1><p><a href="http://kongdewei.cn/2017/06/30/DDCTF%E5%AE%89%E5%8D%93%E9%A2%98-writeup/" target="_blank" rel="external">DDCTF安卓题调试</a></p>
 <p>上一篇文章分析得出关键位置在MainActivity中的onClickTest函数，这次我们直接在这里下断点，动态调试。</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/6671501-a32409efe54d3df4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><img src="/images/jt/6671501-a32409efe54d3df4.png" alt=""></p>
 <p>模拟器随便输入，点击test按钮，就会断在我们下的地方</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/6671501-fe7bf17666b38866.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
-<p>点击如图加号添加v0 ,v1,p0监视变量，并F8单步向下，走到58行，就会从so中返回flag到系统apk的v1变量中。<br><img src="http://upload-images.jianshu.io/upload_images/6671501-580febd80d059429.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p>对比下反编译的源码，更容易分析apk的工作流程。<br><img src="http://upload-images.jianshu.io/upload_images/6671501-c2317bf131ebf003.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><img src="/images/jt/6671501-fe7bf17666b38866.png" alt="Paste_Image.png"></p>
+<p>点击如图加号添加v0 ,v1,p0监视变量，并F8单步向下，走到58行，就会从so中返回flag到系统apk的v1变量中。<br><img src="/images/jt/6671501-580febd80d059429.png" alt=""></p>
+<p>对比下反编译的源码，更容易分析apk的工作流程。<br><img src="/images/jt/6671501-c2317bf131ebf003.png" alt=""></p>
 <h1 id="0x04-总结"><a href="#0x04-总结" class="headerlink" title="0x04 总结"></a>0x04 总结</h1><p>对于这个CTF的apk，动态调试会更加直观，下好断点，添加监视变量直接但步向下即可，比静态修改重新打包来的方便。</p>
 <p>转载请注明出处。</p>
 ]]></content>
