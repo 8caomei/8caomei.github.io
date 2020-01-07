@@ -11,12 +11,12 @@
 <p>github<br><a href="https://github.com/VirusTotal/yara" target="_blank" rel="external">https://github.com/VirusTotal/yara</a></p>
 </blockquote>
 <a id="more"></a>
-<h1 id="windows编译使用"><a href="#windows编译使用" class="headerlink" title="windows编译使用"></a>windows编译使用</h1><p>github源码直接有windows版本<br><img src="http://upload-images.jianshu.io/upload_images/6671501-b52deedeea0997d3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="github源码直接有windows版本"></p>
+<h1 id="windows编译使用"><a href="#windows编译使用" class="headerlink" title="windows编译使用"></a>windows编译使用</h1><p>github源码直接有windows版本<br><img src="/images/jt/6671501-b52deedeea0997d3.png" alt="github源码直接有windows版本"></p>
 <p>使用visual studio 2015打开直接生成即可</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/6671501-afb927a7d791adcd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="
+<p><img src="/images/jt/6671501-afb927a7d791adcd.png" alt="
 使用visual studio 2015打开直接生成即可"></p>
-<p>Debug目录下生成了yara64.exe<br><img src="http://upload-images.jianshu.io/upload_images/6671501-dde1433dbb94df95.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Debug目录下生成了yara64.exe"></p>
-<p>运行yara<br><img src="http://upload-images.jianshu.io/upload_images/6671501-8950a7d82ddedd39.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="运行yara"></p>
+<p>Debug目录下生成了yara64.exe<br><img src="/images/jt/6671501-dde1433dbb94df95.png" alt="Debug目录下生成了yara64.exe"></p>
+<p>运行yara<br><img src="/images/jt/6671501-8950a7d82ddedd39.png" alt="运行yara"></p>
 <p>调用方式</p>
 <blockquote>
 <p>yara64.exe 参数 规则文件 目标文件或目录<br>例如<br>yara64.exe generic_jsp.jar cmd.jsp<br>yara64.exe generic_jsp.jar cmd.jsp -s</p>
@@ -26,16 +26,16 @@
 <blockquote>
 <p><a href="https://github.com/Yara-Rules/rules" target="_blank" rel="external">https://github.com/Yara-Rules/rules</a></p>
 </blockquote>
-<p><img src="http://upload-images.jianshu.io/upload_images/6671501-5fc673b688bd67d9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="例子"></p>
+<p><img src="/images/jt/6671501-5fc673b688bd67d9.png" alt="例子"></p>
 <p>具体参数可通过–help查看</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/6671501-9d89438b94788ac5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="具体参数可通过--help查看"></p>
+<p><img src="/images/jt/6671501-9d89438b94788ac5.png" alt="具体参数可通过--help查看"></p>
 <h1 id="Linux编译使用"><a href="#Linux编译使用" class="headerlink" title="Linux编译使用"></a>Linux编译使用</h1><p>我使用的使ubuntu,从github下载源码后</p>
 <blockquote>
 <p>sudo apt-get install automake libtool make gcc<br>sudo apt-get install flex bison<br>chmod 777 bootstrap.sh<br>./bootstrap.sh<br>chmod 777 configure<br>./configure<br>sudo make install</p>
 </blockquote>
 <p>参考：<a href="https://yara.readthedocs.io/en/v3.6.0/gettingstarted.html" target="_blank" rel="external">https://yara.readthedocs.io/en/v3.6.0/gettingstarted.html</a></p>
-<p>使用方式跟windows相同这里就不赘述<br><img src="http://upload-images.jianshu.io/upload_images/6671501-b9c199c628db9677.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="使用方式跟windows相同这里就不赘述"></p>
-<p>使用Webshells_index.jar规则扫描下我的jspshell，看下效果还是不错的<br><img src="http://upload-images.jianshu.io/upload_images/6671501-33e554cfc6dbcd6f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="使用Webshells_index.jar规则扫描下我的jspshell目录，看下效果还是不错的"></p>
+<p>使用方式跟windows相同这里就不赘述<br><img src="/images/jt/6671501-b9c199c628db9677.png" alt="使用方式跟windows相同这里就不赘述"></p>
+<p>使用Webshells_index.jar规则扫描下我的jspshell，看下效果还是不错的<br><img src="/images/jt/6671501-33e554cfc6dbcd6f.png" alt="使用Webshells_index.jar规则扫描下我的jspshell目录，看下效果还是不错的"></p>
 ]]></content>
     </entry>
     
@@ -49,11 +49,11 @@
 <a id="more"></a>
 <p>我们使用的是这款云WAF<br><a href="https://waf.xsec.io/" target="_blank" rel="external">https://waf.xsec.io/</a><br><a href="https://github.com/xsec-lab" target="_blank" rel="external">https://github.com/xsec-lab</a></p>
 <h1 id="下载与安装"><a href="#下载与安装" class="headerlink" title="下载与安装"></a>下载与安装</h1><p>直接且到root用户下执行命令</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/6671501-67317746f1c01a9e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>安装openresty</p>
+<p><img src="/images/jt/6671501-67317746f1c01a9e.png" alt=""><br>安装openresty</p>
 <blockquote>
 <p>apt-get update<br>apt-get install libreadline-dev libncurses5-dev libpcre3-dev libssl-dev perl make build-essential<br>sudo ln -s /sbin/ldconfig /usr/bin/ldconfig<br>wget <a href="https://openresty.org/download/openresty-1.9.15.1.tar.gz" target="_blank" rel="external">https://openresty.org/download/openresty-1.9.15.1.tar.gz</a><br>tar -zxvf openresty-1.9.15.1.tar.gz<br>cd openresty-1.9.15.1<br>./configure<br>make &amp;&amp; sudo make install</p>
 </blockquote>
-<p>如果出现如下错误提示<br><img src="http://upload-images.jianshu.io/upload_images/6671501-c2e2c884735c1c7d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>解决方法</p>
+<p>如果出现如下错误提示<br><img src="/images/jt/6671501-c2e2c884735c1c7d.png" alt=""><br>解决方法</p>
 <blockquote>
 <p>rm /var/cache/apt/archives/lock<br>rm /var/lib/dpkg/lock</p>
 </blockquote>
@@ -69,7 +69,7 @@
 <blockquote>
 <p>apt-get install vim</p>
 </blockquote>
-<p>配置root密码，我这里直接写123456了，后面还会在重复填写一次。<br><img src="http://upload-images.jianshu.io/upload_images/6671501-a5faca980cf84cd0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>配置root密码，我这里直接写123456了，后面还会在重复填写一次。<br><img src="/images/jt/6671501-a5faca980cf84cd0.png" alt=""></p>
 <h1 id="waf部署与配置"><a href="#waf部署与配置" class="headerlink" title="waf部署与配置"></a>waf部署与配置</h1><p>将x-waf的代码目录放置到openresty的/usr/local/openresty/nginx/conf目录下，然后在openresty的conf的目录下新建vhosts目录</p>
 <blockquote>
 <p>cd /usr/local/openresty/nginx/conf/<br>git clone <a href="https://github.com/xsec-lab/x-waf.git" target="_blank" rel="external">https://github.com/xsec-lab/x-waf.git</a><br>mkdir vhosts</p>
@@ -87,7 +87,7 @@
 <blockquote>
 <p>/usr/local/openresty/nginx/sbin/nginx -t</p>
 </blockquote>
-<p>出现如下提示则配置正确<br><img src="http://upload-images.jianshu.io/upload_images/6671501-c9cfc8232ee44e8a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>出现如下提示则配置正确<br><img src="/images/jt/6671501-c9cfc8232ee44e8a.png" alt=""></p>
 <p>启动waf</p>
 <blockquote>
 <p>/usr/local/openresty/nginx/sbin/nginx</p>
@@ -97,7 +97,7 @@
 <p>curl <a href="http://127.0.0.1/\?id\=1%20union%20select%201,2,3" target="_blank" rel="external">http://127.0.0.1/\?id\=1%20union%20select%201,2,3</a></p>
 </blockquote>
 <p>浏览器访问</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/6671501-062148d75c420c33.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><img src="/images/jt/6671501-062148d75c420c33.png" alt=""></p>
 <h1 id="安装后台"><a href="#安装后台" class="headerlink" title="安装后台"></a>安装后台</h1><p>git上作者提供的教程需要使用go编译，我这里直接提供一个编译好的包。</p>
 <blockquote>
 <p><a href="http://download.csdn.net/download/dad9988/9929074" target="_blank" rel="external">http://download.csdn.net/download/dad9988/9929074</a></p>
@@ -111,23 +111,23 @@
 <p>tar -xvf x-waf-admin0.1-linux-amd64.tar.gz<br>cd x-waf-admin<br>cd conf<br>vim app.ini</p>
 </blockquote>
 <p>修改数据库帐号密码，以及API_SERVERS</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/6671501-bb0d1d1ad6f83eae.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><img src="/images/jt/6671501-bb0d1d1ad6f83eae.png" alt=""></p>
 <p>启动后台,x-waf-admin目录中启动server</p>
 <blockquote>
 <p>./server</p>
 </blockquote>
 <p>默认帐号admin，密码为：x@xsec.io</p>
-<h1 id="配置反向代理"><a href="#配置反向代理" class="headerlink" title="配置反向代理"></a>配置反向代理</h1><p><img src="http://upload-images.jianshu.io/upload_images/6671501-e24d8355e30803c4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>新增一个后端节点，我这里直接用我的博客<a href="http://kongdewei.cn" target="_blank" rel="external">http://kongdewei.cn</a><br>这里的151.101.72.133直接ping自己的域名就可以获得<br><img src="http://upload-images.jianshu.io/upload_images/6671501-5c4599e1f42f917c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p>保存返回，然后选择同步全部后端配置，出现如下提示则配置正确。<br><img src="http://upload-images.jianshu.io/upload_images/6671501-d78b3873f5397be3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>修改hosts指向</p>
+<h1 id="配置反向代理"><a href="#配置反向代理" class="headerlink" title="配置反向代理"></a>配置反向代理</h1><p><img src="/images/jt/6671501-e24d8355e30803c4.png" alt=""><br>新增一个后端节点，我这里直接用我的博客<a href="http://kongdewei.cn" target="_blank" rel="external">http://kongdewei.cn</a><br>这里的151.101.72.133直接ping自己的域名就可以获得<br><img src="/images/jt/6671501-5c4599e1f42f917c.png" alt=""></p>
+<p>保存返回，然后选择同步全部后端配置，出现如下提示则配置正确。<br><img src="/images/jt/6671501-d78b3873f5397be3.png" alt=""><br>修改hosts指向</p>
 <blockquote>
 <p>vim /etc/hosts</p>
 </blockquote>
 <p>这里我就直接修改hosts文件指向本地，就不修改域名解析了。</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/6671501-59269bb922daa05d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p>测试访问<br><img src="http://upload-images.jianshu.io/upload_images/6671501-cb18969e3b7a6a8e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>添加恶意参数查看是否拦截</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/6671501-282dfe57617ec588.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><img src="/images/jt/6671501-59269bb922daa05d.png" alt=""></p>
+<p>测试访问<br><img src="/images/jt/6671501-cb18969e3b7a6a8e.png" alt=""><br>添加恶意参数查看是否拦截</p>
+<p><img src="/images/jt/6671501-282dfe57617ec588.png" alt=""></p>
 <p>规则的添加与删除在web后台直接可以操作</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/6671501-0aeb285ad09108d3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><img src="/images/jt/6671501-0aeb285ad09108d3.png" alt=""></p>
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>编写参考<a href="https://waf.xsec.io/docs" target="_blank" rel="external">https://waf.xsec.io/docs</a><br>最初安装配置的时候走了一些弯路，在<a href="http://www.caiyongjian.cn" target="_blank" rel="external">菜菜</a>的指导最终配置成功，关于waf的规则需要自己慢慢收集，最近有人逆向了阿里云waf，有逆向功底的小伙伴可以尝试对成熟的产品进行逆向，挖掘一下他们的规则，添加进去，逆向waf就和他们的一样好用了。</p>
 ]]></content>
     </entry>
@@ -141,28 +141,28 @@
 </blockquote>
 <a id="more"></a>
 <h1 id="尝试"><a href="#尝试" class="headerlink" title="尝试"></a>尝试</h1><p>主要是为了绕过安全狗的一句话检测，开启这个就行了。</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/6671501-7ce6ca36b8408f42.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>在IIS目录放一句话木马。</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/6671501-6c03c7d090466f1d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><img src="/images/jt/6671501-7ce6ca36b8408f42.png" alt=""><br>在IIS目录放一句话木马。</p>
+<p><img src="/images/jt/6671501-6c03c7d090466f1d.png" alt=""></p>
 <blockquote>
 <p>GIF89<br>&lt;%eval request(“1”)%&gt;</p>
 </blockquote>
 <p>最普通的那种，并没有各种乱七八糟的变形之类的。<br>通过浏览器访问。</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/6671501-1280958ff0e07b59.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>正常的，并没有被拦截。添加到菜刀列表，访问试试看。</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/6671501-2b6727021ea9022d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p>通过菜刀访问，被安全狗拦截了，打开fiddler看看封包。<br><img src="http://upload-images.jianshu.io/upload_images/6671501-90208c02991e4fc6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<h1 id="分析修改"><a href="#分析修改" class="headerlink" title="分析修改"></a>分析修改</h1><p><img src="http://upload-images.jianshu.io/upload_images/6671501-0a857dc4738ef839.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><img src="/images/jt/6671501-1280958ff0e07b59.png" alt=""><br>正常的，并没有被拦截。添加到菜刀列表，访问试试看。</p>
+<p><img src="/images/jt/6671501-2b6727021ea9022d.png" alt=""></p>
+<p>通过菜刀访问，被安全狗拦截了，打开fiddler看看封包。<br><img src="/images/jt/6671501-90208c02991e4fc6.png" alt=""></p>
+<h1 id="分析修改"><a href="#分析修改" class="headerlink" title="分析修改"></a>分析修改</h1><p><img src="/images/jt/6671501-0a857dc4738ef839.png" alt=""></p>
 <p>因为以前做过免杀，所以最早的时候没有各种工具可以定位，我是通过OD的一半一半法来定位被查杀的位置。<br>AAAAAAAAAAAAAAABBAAAAAAAAAAAAAAA<br>我当时的想法是，能不能运用在过WAF上，先把特征码对半，然后慢慢对被检测的补位进行定位。</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/6671501-4af609276dd7bf15.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>去掉一般的封包重发，还是被拦截，看来特征在前半段。</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/6671501-3e72a3306f5eefcf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>已经没有被拦截的提示，但是程序也是报错了，毕竟代码不完整，于是我想到了之前过安全狗的SQL注入是通过加很长很长的字符，然后就能绕过SQL注入检测，那么如果我给这段封包加很长的字符是不是也可以绕过。</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/6671501-711be607093c7263.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>通过增加很长的前缀，就过掉了安全狗，但是如果我每个封包都这样拦截修改是不是太麻烦了。于是我想到了通过OD修改。</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/6671501-e3af64410a651e61.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>原版的菜刀并没有加壳，可以直接修改，打开OD查看下字符串。</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/6671501-f0d93d4c1ef0cf27.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>这个位置是ASP的原版字符串，通过这里修改就可以修改他的发包，但是因为需要增加的长多比较大，所以原程序并没有那么大的空地址段给我写，要自己另外增加区段。<br>上C32，新建一个文件，然后把前面的字符加进来。</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/6671501-63598ee88c77e39f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>区段做好了，然后用PEid把区段加到程序里。</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/6671501-20563fbdc384ea2c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>然后通过OD修改，字符串偏移位置。</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/6671501-467b00f1381ca530.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>这里是004ab000</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/6671501-d380c6d28f8c51c1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>    保存下文件，然后用fiddler抓包查看是否天然带我们的字符串。</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/6671501-095e2219b13404c6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>通过修改发包已经天然带字符串，当然不止修改一个地方，要完成ASP完成可用要修改好几处位置。</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/6671501-8247ff4e790229f1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><img src="/images/jt/6671501-4af609276dd7bf15.png" alt=""><br>去掉一般的封包重发，还是被拦截，看来特征在前半段。</p>
+<p><img src="/images/jt/6671501-3e72a3306f5eefcf.png" alt=""><br>已经没有被拦截的提示，但是程序也是报错了，毕竟代码不完整，于是我想到了之前过安全狗的SQL注入是通过加很长很长的字符，然后就能绕过SQL注入检测，那么如果我给这段封包加很长的字符是不是也可以绕过。</p>
+<p><img src="/images/jt/6671501-711be607093c7263.png" alt=""><br>通过增加很长的前缀，就过掉了安全狗，但是如果我每个封包都这样拦截修改是不是太麻烦了。于是我想到了通过OD修改。</p>
+<p><img src="/images/jt/6671501-e3af64410a651e61.png" alt=""><br>原版的菜刀并没有加壳，可以直接修改，打开OD查看下字符串。</p>
+<p><img src="/images/jt/6671501-f0d93d4c1ef0cf27.png" alt=""><br>这个位置是ASP的原版字符串，通过这里修改就可以修改他的发包，但是因为需要增加的长多比较大，所以原程序并没有那么大的空地址段给我写，要自己另外增加区段。<br>上C32，新建一个文件，然后把前面的字符加进来。</p>
+<p><img src="/images/jt/6671501-63598ee88c77e39f.png" alt=""><br>区段做好了，然后用PEid把区段加到程序里。</p>
+<p><img src="/images/jt/6671501-20563fbdc384ea2c.png" alt=""><br>然后通过OD修改，字符串偏移位置。</p>
+<p><img src="/images/jt/6671501-467b00f1381ca530.png" alt=""><br>这里是004ab000</p>
+<p><img src="/images/jt/6671501-d380c6d28f8c51c1.png" alt=""><br>    保存下文件，然后用fiddler抓包查看是否天然带我们的字符串。</p>
+<p><img src="/images/jt/6671501-095e2219b13404c6.png" alt=""><br>通过修改发包已经天然带字符串，当然不止修改一个地方，要完成ASP完成可用要修改好几处位置。</p>
+<p><img src="/images/jt/6671501-8247ff4e790229f1.png" alt=""></p>
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>刚开始我认为这些waf是完美的，后来我发现，这些防火墙有些类似于早点的杀毒软件，通过特征库来拦截，只要找对特征，就可以对症下药，不同品牌的防火墙规则不同，但是换汤不换药基本都是这样的套路，兵来将敌水来土堰靠规则并不靠谱，修改web程序中的漏洞才是关键，过度依赖防火墙并不能很好的保护网站。<br>jsp与php 版过防火墙：<a href="http://www.freebuf.com/sectool/140421.html" target="_blank" rel="external">PyCmd 加密隐形木马</a></p>
 ]]></content>
     </entry>
