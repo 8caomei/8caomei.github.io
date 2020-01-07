@@ -85,22 +85,22 @@
 <meta property="og:url" content="http://www.kongdewei.cn/2017/06/30/DDCTF安卓题-writeup/index.html">
 <meta property="og:site_name" content="草莓的博客">
 <meta property="og:description" content="0x01 引子前段做了一个滴滴CTF的其中一道安卓题目，题目并不难，主要分享一下做题过程和思路。">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/6671501-b5da14d5cee7f2d3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/6671501-ba050aa48e79dbb0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/6671501-6d5497f007ffebc1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/6671501-c084c150baf021d3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/6671501-95060fbf26f78c84.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/6671501-f40b92aa8b0e886a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/6671501-8cf3623f282ba066.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/6671501-a8017425e94dc037.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/6671501-5e5c61615f55fa02.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/6671501-7c1bc6151beb3e87.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/6671501-7f5b6a7367713f74.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-08-11T03:48:18.000Z">
+<meta property="og:image" content="http://www.kongdewei.cn/images/jt/6671501-b5da14d5cee7f2d3.png">
+<meta property="og:image" content="http://www.kongdewei.cn/images/jt/6671501-ba050aa48e79dbb0.png">
+<meta property="og:image" content="http://www.kongdewei.cn/images/jt/6671501-6d5497f007ffebc1.png">
+<meta property="og:image" content="http://www.kongdewei.cn/images/jt/6671501-c084c150baf021d3.png">
+<meta property="og:image" content="http://www.kongdewei.cn/images/jt/6671501-95060fbf26f78c84.png">
+<meta property="og:image" content="http://www.kongdewei.cn/images/jt/6671501-f40b92aa8b0e886a.png">
+<meta property="og:image" content="http://www.kongdewei.cn/images/jt/6671501-8cf3623f282ba066.png">
+<meta property="og:image" content="http://www.kongdewei.cn/images/jt/6671501-a8017425e94dc037.png">
+<meta property="og:image" content="http://www.kongdewei.cn/images/jt/6671501-5e5c61615f55fa02.png">
+<meta property="og:image" content="http://www.kongdewei.cn/images/jt/6671501-7c1bc6151beb3e87.png">
+<meta property="og:image" content="http://www.kongdewei.cn/images/jt/6671501-7f5b6a7367713f74.png">
+<meta property="og:updated_time" content="2020-01-07T06:15:28.064Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="DDCTF安卓题-writeup">
 <meta name="twitter:description" content="0x01 引子前段做了一个滴滴CTF的其中一道安卓题目，题目并不难，主要分享一下做题过程和思路。">
-<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/6671501-b5da14d5cee7f2d3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:image" content="http://www.kongdewei.cn/images/jt/6671501-b5da14d5cee7f2d3.png">
 
 
 
@@ -353,16 +353,16 @@
 
       
         <h1 id="0x01-引子"><a href="#0x01-引子" class="headerlink" title="0x01 引子"></a>0x01 引子</h1><p>前段做了一个滴滴CTF的其中一道安卓题目，题目并不难，主要分享一下做题过程和思路。</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/6671501-b5da14d5cee7f2d3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="题目包"><br><a id="more"></a></p>
+<p><img src="/images/jt/6671501-b5da14d5cee7f2d3.png" alt="题目包"><br><a id="more"></a></p>
 <h1 id="0x02-要求与提示"><a href="#0x02-要求与提示" class="headerlink" title="0x02 要求与提示"></a>0x02 要求与提示</h1><p>赛题背景：本挑战结合了Android, Java, C/C++，加密算法等知识点，考察了挑战者的binary逆向技术和加密算法能力。</p>
 <p>赛题描述：本题是一个app，请试分析app中隐藏的key，逆向加密算法并得到对应的秘钥。可以在app中尝试输入key，如果正确会显示“correct”，如果错误会显示“Wrong”。<br>提   示：阅读assembly code，理解xor的加密逻辑和参数，解出答案。<br>评分标准：key正确则可进入下一题。</p>
 <p>Flag格式为DDCTF-XXXXXXXXXXXX@didichuxing.com</p>
-<p>还是很好辨认的<img src="http://upload-images.jianshu.io/upload_images/6671501-ba050aa48e79dbb0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<h1 id="0x03-分析与过程"><a href="#0x03-分析与过程" class="headerlink" title="0x03 分析与过程"></a>0x03 分析与过程</h1><p><img src="http://upload-images.jianshu.io/upload_images/6671501-6d5497f007ffebc1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="运行app后"></p>
+<p>还是很好辨认的<img src="/images/jt/6671501-ba050aa48e79dbb0.png" alt=""></p>
+<h1 id="0x03-分析与过程"><a href="#0x03-分析与过程" class="headerlink" title="0x03 分析与过程"></a>0x03 分析与过程</h1><p><img src="/images/jt/6671501-6d5497f007ffebc1.png" alt="运行app后"></p>
 <p>直接点击下方的TEST按钮显示Wrong<br>上apkkiller<br>找到关键位置，进行关键词搜索（搜Wrong）。</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/6671501-c084c150baf021d3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="appkiller找到关键位置"></p>
+<p><img src="/images/jt/6671501-c084c150baf021d3.png" alt="appkiller找到关键位置"></p>
 <p>反编译源码（appkiller上点击java图标）</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/6671501-95060fbf26f78c84.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="关键位置源码"></p>
+<p><img src="/images/jt/6671501-95060fbf26f78c84.png" alt="关键位置源码"></p>
 <p>这里直接贴上来代码<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span></span></div><div class="line">  <span class="keyword">extends</span> <span class="title">AppCompatActivity</span></div><div class="line">&#123;</div><div class="line">  <span class="keyword">private</span> TextView mFlagEntryView;</div><div class="line">  <span class="keyword">private</span> TextView mFlagResultView;</div><div class="line">  </div><div class="line">  <span class="keyword">static</span></div><div class="line">  &#123;</div><div class="line">    System.loadLibrary(<span class="string">"hello-libs"</span>);</div><div class="line">  &#125;</div><div class="line">  </div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClickTest</span><span class="params">(View paramView)</span></span></div><div class="line">  &#123;</div><div class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.mFlagEntryView.getText().toString().equals(stringFromJNI())) &#123;</div><div class="line">      <span class="keyword">this</span>.mFlagResultView.setText(<span class="string">"Correct"</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">for</span> (;;)</div><div class="line">    &#123;</div><div class="line">      <span class="keyword">return</span>;</div><div class="line">      <span class="keyword">this</span>.mFlagResultView.setText(<span class="string">"Wrong"</span>);</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  </div><div class="line">  <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle paramBundle)</span></span></div><div class="line">  &#123;</div><div class="line">    <span class="keyword">super</span>.onCreate(paramBundle);</div><div class="line">    setContentView(<span class="number">2130968602</span>);</div><div class="line">    <span class="keyword">this</span>.mFlagEntryView = ((TextView)findViewById(<span class="number">2131427413</span>));</div><div class="line">    <span class="keyword">this</span>.mFlagResultView = ((TextView)findViewById(<span class="number">2131427415</span>));</div><div class="line">  &#125;</div><div class="line">  </div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">native</span> String <span class="title">stringFromJNI</span><span class="params">()</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>其中onClickTest响应TEST按钮点击 </p>
 <blockquote>
@@ -374,20 +374,20 @@
 <p>  static<br>  {<br>    System.loadLibrary(“hello-libs”);<br>  }</p>
 </blockquote>
 <p>加载了so模块hello-libs</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/6671501-f40b92aa8b0e886a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="7zip打开apk"></p>
+<p><img src="/images/jt/6671501-f40b92aa8b0e886a.png" alt="7zip打开apk"></p>
 <p>这个时候分析so文件获取flag就行了。</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/6671501-8cf3623f282ba066.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="so文件拖入IDA"></p>
+<p><img src="/images/jt/6671501-8cf3623f282ba066.png" alt="so文件拖入IDA"></p>
 <p>这里很简单并没有加什么混淆，直接写在so文件中，到这里就算完成这题。</p>
 <h1 id="0x04-另一种思路"><a href="#0x04-另一种思路" class="headerlink" title="0x04 另一种思路"></a>0x04 另一种思路</h1><p>如果这个题目的so中是经过运算加密返回的，并无法直接静态看到flag那该怎么办。</p>
 <blockquote>
 <p> this.mFlagEntryView.getText().toString().equals(stringFromJNI())</p>
 </blockquote>
 <p>前面我们分析过这个位置，因为使用equals进行字符串对比。<br>看下equals的java解释</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/6671501-a8017425e94dc037.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="equals解释"></p>
+<p><img src="/images/jt/6671501-a8017425e94dc037.png" alt="equals解释"></p>
 <p>Equals之前使用了tostring，所以如果mFlagEntryView的内容与stringFromJNI返回值相同才会出现true的情况，那么也就是说stringFromJNI是把flag返回到程序领空的，我们直接修改smil代码把flag显示在mFlagResultView中。</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/6671501-5e5c61615f55fa02.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="直接修改smail语句实现flag显示在view中"></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/6671501-7c1bc6151beb3e87.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="直接修改smail语句实现flag显示在view中"></p>
-<p>直接获取stringFromJNI返回值然后赋值给mFlagResultView，再安装运行即可。<br><img src="http://upload-images.jianshu.io/upload_images/6671501-7f5b6a7367713f74.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="打包运行效果"></p>
+<p><img src="/images/jt/6671501-5e5c61615f55fa02.png" alt="直接修改smail语句实现flag显示在view中"></p>
+<p><img src="/images/jt/6671501-7c1bc6151beb3e87.png" alt="直接修改smail语句实现flag显示在view中"></p>
+<p>直接获取stringFromJNI返回值然后赋值给mFlagResultView，再安装运行即可。<br><img src="/images/jt/6671501-7f5b6a7367713f74.png" alt="打包运行效果"></p>
 
       
     </div>
