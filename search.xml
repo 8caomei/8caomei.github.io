@@ -7,9 +7,8 @@
 <p>#实践</p>
 <blockquote>
 <p>系统<br>windows 7 32</p>
-<p>工具<br><a href="http://www.rohitab.com/apimonitor" target="_blank" rel="external">API Monitor</a><br><a href="https://www.cheatengine.org/" target="_blank" rel="external">Cheat Engine6.7</a><br><a href="https://github.com/0x09AL/RdpThief" target="_blank" rel="external">RdpThief</a></p>
+<p>工具<br><a href="http://www.rohitab.com/apimonitor" target="_blank" rel="external">API Monitor</a><br><a href="https://www.cheatengine.org/" target="_blank" rel="external">Cheat Engine6.7</a><br><a href="https://github.com/0x09AL/RdpThief" target="_blank" rel="external">RdpThief</a><br><a id="more"></a><br>将API Monitor，附加选择mstsc进程，如图所示：<br><img src="/images/jt/6671501-c3cf4f361cf0a752.png" alt="监听RDP进程"></p>
 </blockquote>
-<p>将API Monitor，附加选择mstsc进程，如图所示：<br><img src="/images/jt/6671501-c3cf4f361cf0a752.png" alt="监听RDP进程"></p>
 <p>RDP点击连接，并查看API Monitor列表<br><img src="/images/jt/6671501-839e4eb942b3e86d.png" alt="RDP连接"></p>
 <p>如果未监听到，请在左侧API帅选器中勾选如图<br><img src="/images/jt/6671501-078070b69409f2b4.png" alt="抓取RDP调用API过程"></p>
 <p>可以看到，连接IP出现在CredReadW的调用中，直接HOOK这个位置就可以获取连接IP，方法很多可以E语言实现比较简单，这里我们参考RdpThief源码，使用<a href="https://github.com/Microsoft/Detours" target="_blank" rel="external">Detours</a><br>框架来实现HOOK。</p>
@@ -266,8 +265,8 @@
         <category>逆向分析</category>
       </categories>
       <tags>
-        <tag>ctf</tag>
         <tag>CrackMe</tag>
+        <tag>ctf</tag>
       </tags>
   </entry>
   <entry>
